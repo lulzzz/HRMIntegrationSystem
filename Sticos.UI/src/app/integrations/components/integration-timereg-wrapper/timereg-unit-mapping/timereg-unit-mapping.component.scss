@@ -1,0 +1,89 @@
+
+.matching-data-company-checkbox {
+  width: 35px;
+  height: 21px;
+}
+
+.matching-data-row:hover {
+  background-color: rgba(191, 191, 191, 0.14);
+}
+
+.matching-data-checkboxes {
+  width: 1px;
+}
+
+.matching-data-buttons {
+  margin-top: 5px;
+}
+
+.matching-data-buttons button {
+  margin-right: 5px;
+}
+
+.external-company {
+  width: 40%;
+}
+
+.matching-data {
+  margin-top: 15px;
+}
+.mapped {
+  color: var(--success);
+}
+
+.not-mapped {
+  color: var(--orange);
+}
+
+.changed {
+  color: var(--green);
+}
+
+::ng-deep .dx-datagrid-content .dx-datagrid-table .dx-row > td {
+  vertical-align: middle;
+}
+
+.visible {
+  display: none;
+}
+
+::ng-deep .dx-datagrid-rowsview .dx-selection.dx-row > td, .dx-datagrid-rowsview .dx-selection.dx-row:hover > td {
+  background-color: transparent !important;
+}
+
+::ng-deep .dx-lookup-arrow {
+  transform: rotateZ(90deg);
+}
+
+::ng-deep .dx-lookup-popup-wrapper .dx-list-item-content{
+  border-bottom: 1px solid #ddd;
+}
+.info-text {
+  position: absolute;
+  right: 50%;
+  font-weight: bold;
+  margin-top: 25px;
+color: var(--secondary);
+    font-size: 1.0em;
+}
+
+.btn-circle {
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 17.5px;
+  border: none;
+}
+
+::ng-deep .unit-mapping-grid {
+  padding-top: 5px;
+  & .dx-datagrid-content .dx-datagrid-table .dx-row > td:last-child {
+    background-color: white !important;
+  }
+}
+
+
+

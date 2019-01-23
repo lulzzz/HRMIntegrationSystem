@@ -1,0 +1,7 @@
+ul.pagination {
+  li.page-item.active {
+    >a.page-link {
+      color: #fff !important;
+    }
+  }
+}

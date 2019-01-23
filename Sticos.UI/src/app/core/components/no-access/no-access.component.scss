@@ -1,0 +1,9 @@
+.lock-icon {
+  height: 140px;
+  width: 160px;
+  display: inline-block;
+
+  & > svg {
+    max-height: 100%;
+  }
+}

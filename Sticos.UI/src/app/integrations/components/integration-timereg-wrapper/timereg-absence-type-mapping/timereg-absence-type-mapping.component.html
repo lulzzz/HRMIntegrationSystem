@@ -1,0 +1,124 @@
+<div *ngIf="!isLoading">
+    <div class="raw">
+        <div class="matching-data-buttons">
+          <button class="btn btn-default" [disabled]="selectedItems" (click)="tryMatchAbsenceCode()">{{ 'integrations.mapping.common.try-match' | translate }}</button>
+          <button class="btn btn-default" [disabled]="selectedItems || !needToBeConfirmed" (click)="onSubmitMatch()">{{ 'integrations.mapping.common.confirm-mapping' | translate }}</button>
+          <button class="btn btn-default" [disabled]="selectedItems" (click)="onIgnoreMatch()">{{ 'integrations.mapping.common.ignore-mapping' | translate }}</button>
+          <button class="btn btn-default" [disabled]="selectedItems || !mappedRows" (click)="onDeleteMatch()">{{ 'integrations.mapping.common.remove-mapping' | translate }}</button>
+        </div>
+        <span *ngIf="needToBeConfirmed" class="info-text"> {{ needToBeConfirmed }} {{ 'integrations.mapping.common.need-to-be-confirmed' | translate }}</span>
+      </div>
+  <dx-data-grid id="notMatchedGrid" class="absence-type-mapping-grid" #notMatchedGrid [dataSource]="_matchedUAbsenceCodes"
+    hoverStateEnabled="true" [showBorders]="true" (onSelectionChanged)="onSelectionChanged($event)" [(selectedRowKeys)]="selectedRows"
+    (onRowPrepared)="onRowPrepared($event)">
+    <dxo-selection selectAllMode="page" showCheckBoxesMode="always" mode="multiple"></dxo-selection>
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxo-header-filter [visible]="true" [allowSearch]="true"></dxo-header-filter>
+    <dxo-paging [pageSize]="25"></dxo-paging>
+    <dxi-column dataField="absenceCodeName" [calculateFilterExpression]="calculateFilterExpression" [caption]="'integrations.mapping.absence.absence-code' | translate"
+      [allowSorting]="true" cellTemplate="absenceCodeTemplate" dataType="string" [allowFiltering]="true" [allowHeaderFiltering]="false"></dxi-column>
+    <dxi-column dataField="entityMatch" [caption]="'integrations.mapping.common.external-data' | translate" [allowSorting]="false"
+      cellTemplate="externalDataTemplate" [allowFiltering]="false" [allowHeaderFiltering]="false"></dxi-column>
+    <dxi-column dataField="stateInfo"  [caption]="'integrations.mapping.common.state' | translate" cellTemplate="stateTemplate"
+      [calculateSortValue]="customStateSort" [allowSorting]="true" width="130" [allowFiltering]="false" [allowHeaderFiltering]="true"
+      [filterOperations]="['contains']" [calculateFilterExpression]="handleFilterState">
+
+      <dxo-header-filter [dataSource]="stateFilter"></dxo-header-filter>
+    </dxi-column>
+    <dxi-column dataField="this" alignment="center" width="70" caption="{{ 'common.options' | translate }}" [allowFiltering]="false"
+      [allowHeaderFiltering]="false" [allowSorting]="false" cellTemplate="actionsTemplate"></dxi-column>
+
+
+    <div *dxTemplate="let data of 'absenceCodeTemplate'">
+      {{ data.value }}
+    </div>
+
+    <div *dxTemplate="let data of 'externalDataTemplate'">
+      <dx-lookup searchEnabled="true" [closeOnOutsideClick]="true" [searchExpr]="searchItems" [showPopupTitle]="false" [grouped]="true"
+        [dataSource]="dataSource" (onValueChanged)="onValueChanged($event, data)" itemTemplate="item" fieldTemplate="field"
+        [value]="data.value.externalData" searchTimeout="200" groupTemplate="group">
+        <div *dxTemplate="let item of 'item'">
+          <div class="d-flex flex-column">
+            <div *ngIf="item.identifiers[0].entity === 'EmploymentLeaveType' else absenceType">
+              <div *ngFor="let item of item.dataSet">
+                {{ ('integrations.mapping.absence.external-data.' + item.value) | translate }}
+              </div>
+            </div>
+            <ng-template #absenceType>
+              <div *ngFor="let item of item.dataSet">
+                {{item.value }}
+              </div>
+            </ng-template>
+          </div>
+        </div>
+        <div *dxTemplate="let item of 'field'">
+          <div *ngIf="item && item.identifiers[0].entity === 'EmploymentLeaveType'">
+            <span *ngFor="let item of item.dataSet">
+              {{ ('integrations.mapping.absence.external-data.' + item.value) | translate }}
+            </span>
+          </div>
+          <div *ngIf="item && item.identifiers[0].entity !== 'EmploymentLeaveType'">
+            {{ item.dataSet | formatDataset}}
+          </div>
+        </div>
+        <div *dxTemplate="let item of 'group'">
+          <h5 *ngIf="item.key === 'EmploymentLeaveType' else absenceType"> {{ 'integrations.mapping.absence.external-data-group.leave-type' | translate}} </h5>
+          <ng-template #absenceType>
+            <h5> {{ 'integrations.mapping.absence.external-data-group.absence-type' | translate }} </h5>
+          </ng-template>
+        </div>
+      </dx-lookup>
+    </div>
+    <div *dxTemplate="let data of 'stateTemplate'">
+      <span [ngSwitch]="data.value.state">
+        <span *ngSwitchCase="1"> {{ 'integrations.mapping.common.mapped' | translate }}
+          <app-badge-component data-toggle="tooltip" data-placement="top" [title]="data.value.stateType | stateType" *ngIf="data.value.stateType"
+            [messageType]="('enum.statetype.' + data.value.stateType) | translate"></app-badge-component>
+        </span>
+        <span *ngSwitchCase="3"> {{ 'integrations.mapping.common.unsaved' | translate }}
+          <app-badge-component data-toggle="tooltip" data-placement="top" [title]="data.value.stateType | stateType" *ngIf="data.value.stateType"
+            [messageType]="('enum.statetype.' + data.value.stateType) | translate"></app-badge-component>
+        </span>
+        <span *ngSwitchCase="2"> {{ 'integrations.mapping.common.ignored' | translate }}
+          <app-badge-component data-toggle="tooltip" data-placement="top" [title]="data.value.stateType | stateType" *ngIf="data.value.stateType"
+            [messageType]="('enum.statetype.' + data.value.stateType) | translate"></app-badge-component>
+        </span>
+        <span *ngSwitchCase="4"> {{ 'integrations.mapping.common.nomap' | translate }}
+          <app-badge-component data-toggle="tooltip" data-placement="top" [title]="data.value.stateType | stateType" *ngIf="data.value.stateType"
+            [messageType]="('enum.statetype.' + data.value.stateType) | translate"></app-badge-component>
+        </span>
+        <span *ngSwitchCase="5"> {{ 'integrations.mapping.common.suggestion' | translate }}
+          <app-badge-component data-toggle="tooltip" data-placement="top" [title]="data.value.stateType | stateType" *ngIf="data.value.stateType"
+            [messageType]="('enum.statetype.' + data.value.stateType) | translate"></app-badge-component>
+        </span>
+      </span>
+    </div>
+
+    <div *dxTemplate="let data of 'actionsTemplate'">
+      <dx-tooltip target="#config-button-{{data.value.entityMapId}}-absencetype" [(visible)]="config[data.value.entityMapId]">
+        <div *dxTemplate="let tooltipData of 'content'">
+          <div class="list-group">
+            <a class="list-group-item list-group-item-action" (click)="tryMatchSingleAbsenceCode(data.value.entityMapId)">
+              {{ 'integrations.mapping.common.try-match' | translate }}
+            </a>
+            <button class="list-group-item list-group-item-action" (click)="confirmSingleAbsenceCode(data)" [disabled]="(data.value.stateInfo.state !== 5 && data.value.stateInfo.stateType === 5) || !needToBeConfirmed">
+              {{ 'integrations.mapping.common.confirm-mapping' | translate }}
+            </button>
+            <a class="list-group-item list-group-item-action" (click)="ignoreSingleAbsenceCode(data)">
+              {{ 'integrations.mapping.common.ignore-mapping' | translate }}
+            </a>
+            <button class="list-group-item list-group-item-action" (click)="deleteSingleAbsenceCode(data)" [disabled]="data.value.stateInfo.state !== 1 && data.value.stateInfo.state !== 2">
+              {{ 'integrations.mapping.common.remove-mapping' | translate }}
+            </button>
+            <button class="list-group-item list-group-item-action" (click)="resetSingleAbsenceCode(data)">
+              {{ 'integrations.mapping.common.reset-mapping' | translate }}
+            </button>
+          </div>
+        </div>
+      </dx-tooltip>
+      <button id="config-button-{{data.value.entityMapId}}-absencetype" class="btn btn-default btn-circle" (click)="showOptions($event, data.value.entityMapId)">
+        <i class="fal fa-lg fa-ellipsis-v fa-2x"></i>
+      </button>
+    </div>
+  </dx-data-grid>
+</div>

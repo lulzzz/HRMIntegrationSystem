@@ -1,0 +1,73 @@
+<div class="card">
+  <div class="card-body">
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-default" routerLink="/admin/integrations/{{integrationId}}">{{ 'common.back' | translate}}</button>
+    </div>
+    <h3 class="float-left">{{ 'integrations.absence.title' | translate }}</h3>
+    <br>
+    <br>
+    <dx-data-grid id="gridContainer" [dataSource]="absenceExports" [showBorders]="true" hoverStateEnabled="true" [masterDetail]="{ enabled: false, template: 'detail'}"
+      (onRowClick)="onRowClicked($event)">
+      <dxo-paging [pageSize]="10"></dxo-paging>
+      <dxi-column dataField="absenceExport.localAbsenceId" alignment="center" caption="{{ 'integrations.mapping.absence.absence-id' | translate}}"
+        [allowSorting]="true" width="100"></dxi-column>
+      <dxi-column dataField="unit" [caption]="'common.unit' | translate" width="130" cellTemplate="unitTemplate"></dxi-column>
+      <dxi-column dataField="employee" [caption]="'common.employee' | translate" width="150" cellTemplate="employeeTemplate"></dxi-column>
+      <dxi-column dataField="absenceExport.message" caption="{{ 'integrations.absence.message' | translate }}" cellTemplate="messageTemplate"></dxi-column>
+      <dxi-column dataField="absenceExport" caption="{{ 'common.last-changed' | translate }}" cellTemplate="lastChangedTemplate"
+        width="140" [calculateSortValue]="customLastChangedSort" sortOrder="desc" [allowSorting]="true"></dxi-column>
+      <dxi-column dataField="absenceExport" caption="{{ 'common.status' | translate }}" cellTemplate="statusTemplate" width="100"></dxi-column>
+
+
+
+      <div *dxTemplate="let data of 'employeeTemplate'">
+        {{ data.value.firstName + ' ' + data.value.lastName }}
+      </div>
+
+      <div *dxTemplate="let data of 'unitTemplate'">
+        {{ data.value.name }}
+      </div>
+
+      <div *dxTemplate="let data of 'messageTemplate'">
+        {{ data.value }}
+      </div>
+
+      <div *dxTemplate="let data of 'statusTemplate'">
+        {{ ('enum.absenceexportstatus.' + data.value.status) | translate}}
+        <i *ngIf="data.value.status === 20" class="fal fa-sync-alt fa-lg absence-export-retry" (click)="exportAbsence(data.value.id, $event)"></i>
+      </div>
+
+      <div *dxTemplate="let data of 'lastChangedTemplate'">
+        <div *ngIf="data.value.updatedBy else createdBy">
+          {{ data.value.updateAt | date:'short' }}
+        </div>
+        <ng-template #createdBy>
+          {{ data.value.createdAt | date:'short' }}
+        </ng-template>
+      </div>
+
+      <div *dxTemplate="let ae of 'detail'">
+        <div class="master-detail-caption">{{ 'integrations.absence.details-of-absence' | translate}}</div>
+        <dx-data-grid [dataSource]="ae.data.absenceEntries" [columnAutoWidth]="true" [showBorders]="true">
+          <dxi-column dataField="StartTime" cellTemplate="startTimeTemplate" caption="{{ 'integrations.absence.start-time' | translate}}"></dxi-column>
+          <dxi-column dataField="EndTime" cellTemplate="endTimeTemplate" caption="{{ 'integrations.absence.end-time' | translate}}"></dxi-column>
+          <dxi-column dataField="IsFullDay" dataType="text" cellTemplate="isFullDayTemplate" caption="{{ 'integrations.absence.full-day' | translate}}"></dxi-column>
+          <dxi-column dataField="LocalAbsenceCode" alignment="center" caption="{{ 'integrations.absence.local-absence-code' | translate}}"></dxi-column>
+          <dxi-column dataField="ExternalId" alignment="center" cellTemplate="externalIdTemplate" caption="{{ 'integrations.absence.external-id' | translate}}"></dxi-column>
+          <div *dxTemplate="let data of 'startTimeTemplate'">
+            {{ data.value | date:'medium' }}
+          </div>
+          <div *dxTemplate="let data of 'endTimeTemplate'">
+            {{ data.value | date:'medium'}}
+          </div>
+          <div *dxTemplate="let data of 'isFullDayTemplate'">
+            {{ data.value ? ('common.yes' | translate) : ('common.no' | translate) }}
+          </div>
+          <div *dxTemplate="let data of 'externalIdTemplate'">
+            {{ data.value }}
+          </div>
+        </dx-data-grid>
+      </div>
+    </dx-data-grid>
+  </div>
+</div>

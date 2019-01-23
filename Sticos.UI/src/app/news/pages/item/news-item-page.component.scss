@@ -1,0 +1,26 @@
+p {
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+}
+
+p.post-author,
+p.post-date {
+  font-size: 16px;
+}
+
+.card-body {
+  font-size: 16px;
+}
+
+.skeletonBlogPost div p {
+  opacity: 0.5;
+  height: 1.1rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #dddddd , #EEEEEE);
+  animation: pulse 1s infinite;
+}
+
+.skeletonBlogPost div p.post-author {
+  width: 30%;
+  height: 2.2rem;
+}

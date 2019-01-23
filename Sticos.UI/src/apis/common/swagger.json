@@ -1,0 +1,1308 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Sticos Common Api",
+        "description": "Swagger Sticos Common Api"
+    },
+    "paths": {
+        "/{customerId}/absencestypes": {
+            "get": {
+                "tags": [
+                    "AbsenceType"
+                ],
+                "operationId": "Get",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "AbsenceTypesIds",
+                        "in": "query",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "Skip",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "Take",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ICode"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{customerId}/anomalies": {
+            "get": {
+                "tags": [
+                    "Anomaly"
+                ],
+                "operationId": "Search",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Location",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Responsible",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Skip",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "Take",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Anomaly"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{customerId}/brregentity/{organizationNumber}": {
+            "get": {
+                "tags": [
+                    "BrregEntity"
+                ],
+                "operationId": "ByCustomerIdBrregentityByOrganizationNumberGet",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "organizationNumber",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "includeChildren",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/BrregEntity"
+                        }
+                    }
+                }
+            }
+        },
+        "/currentuser": {
+            "get": {
+                "tags": [
+                    "CurrentUser"
+                ],
+                "operationId": "Get",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/IClaimsUser"
+                        }
+                    }
+                }
+            }
+        },
+        "/{customerId}/dashboards": {
+            "get": {
+                "tags": [
+                    "Dashboard"
+                ],
+                "operationId": "Search",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Skip",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "Take",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Dashboard"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Dashboard"
+                ],
+                "operationId": "Update",
+                "consumes": [
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json"
+                ],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "dashboardResource",
+                        "in": "body",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Dashboard"
+                        }
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Dashboard"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Dashboard"
+                ],
+                "operationId": "Create",
+                "consumes": [
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json"
+                ],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "dashboardResource",
+                        "in": "body",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Dashboard"
+                        }
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Dashboard"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/{customerId}/dashboards/{id}": {
+            "get": {
+                "tags": [
+                    "Dashboard"
+                ],
+                "operationId": "Get",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Dashboard"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Dashboard"
+                ],
+                "operationId": "Delete",
+                "consumes": [],
+                "produces": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/{customerId}/employees": {
+            "get": {
+                "tags": [
+                    "Employee"
+                ],
+                "operationId": "Search",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "FirstName",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "LastName",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "JobTitle",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "SocialSecurityNumber",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "EmployeesIds",
+                        "in": "query",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "UserIds",
+                        "in": "query",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "UnitIds",
+                        "in": "query",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "Skip",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "Take",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/IEmployee"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{customerId}/news": {
+            "get": {
+                "tags": [
+                    "News"
+                ],
+                "operationId": "Search",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Title",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Skip",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "Take",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/News"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{customerId}/notifications": {
+            "get": {
+                "tags": [
+                    "Notification"
+                ],
+                "operationId": "Search",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Title",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Skip",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "Take",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Notification"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{customerId}/ownertypes": {
+            "get": {
+                "tags": [
+                    "OwnerType"
+                ],
+                "operationId": "Search",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "MinPriority",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "MaxPriority",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "Skip",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "Take",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/OwnerType"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{customerId}/units": {
+            "get": {
+                "tags": [
+                    "Unit"
+                ],
+                "operationId": "GetUnits",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "UnitIds",
+                        "in": "query",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "UnitTypes",
+                        "in": "query",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "Skip",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "Take",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Unit"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{customerId}/units/{id}": {
+            "get": {
+                "tags": [
+                    "Unit"
+                ],
+                "operationId": "GetUnit",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Unit"
+                        }
+                    }
+                }
+            }
+        },
+        "/{customerId}/units/{id}/HierarchyUp": {
+            "get": {
+                "tags": [
+                    "Unit"
+                ],
+                "operationId": "GetHierarchyUp",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/UnitWithParent"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{customerId}/units/{id}/HierarchyDown": {
+            "get": {
+                "tags": [
+                    "Unit"
+                ],
+                "operationId": "GetHierarchyDown",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/UnitWithParent"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{customerId}/users": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "operationId": "Search",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "UnitId",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "Skip",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "Take",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/IUser"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{customerId}/users/{userId}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "operationId": "GetUser",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/IUser"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ICode": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "uuid",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "type": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "value": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "order": {
+                    "format": "int32",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "image": {
+                    "type": "string"
+                }
+            }
+        },
+        "Anomaly": {
+            "required": [
+                "location",
+                "description",
+                "responsible",
+                "status"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "date": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "location": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                },
+                "description": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                },
+                "responsible": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                },
+                "deadline": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "status": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                }
+            }
+        },
+        "BrregEntity": {
+            "type": "object",
+            "properties": {
+                "organizationNumber": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "type": {
+                    "format": "int32",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "type": "integer"
+                },
+                "children": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BrregEntity"
+                    }
+                }
+            }
+        },
+        "IClaimsUser": {
+            "type": "object",
+            "properties": {
+                "userId": {
+                    "format": "int32",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "customerId": {
+                    "format": "int32",
+                    "type": "integer",
+                    "readOnly": true
+                }
+            }
+        },
+        "Dashboard": {
+            "required": [
+                "title",
+                "dashboardConfig"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "title": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                },
+                "dashboardConfig": {
+                    "type": "string"
+                },
+                "ownerTypeId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "ownerId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "isDefault": {
+                    "type": "boolean",
+                    "readOnly": true
+                }
+            }
+        },
+        "IEmployee": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int32",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "firstName": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "lastName": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "jobTitle": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "phone": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "email": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "image": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "userId": {
+                    "format": "int32",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "unitId": {
+                    "format": "int32",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "nationalIdentificationNumber": {
+                    "type": "string",
+                    "readOnly": true
+                }
+            }
+        },
+        "News": {
+            "required": [
+                "title",
+                "body"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "title": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                },
+                "body": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                },
+                "date": {
+                    "format": "date-time",
+                    "type": "string"
+                }
+            }
+        },
+        "Notification": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "body": {
+                    "type": "string"
+                },
+                "date": {
+                    "format": "date-time",
+                    "type": "string"
+                }
+            }
+        },
+        "OwnerType": {
+            "required": [
+                "name"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "name": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                },
+                "priority": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            }
+        },
+        "Unit": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "type": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "legalOrganizationNumber": {
+                    "type": "string"
+                },
+                "businessOrganizationNumber": {
+                    "type": "string"
+                },
+                "parentId": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            }
+        },
+        "UnitWithParent": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "parentId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "type": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            }
+        },
+        "IUser": {
+            "type": "object",
+            "properties": {
+                "userId": {
+                    "format": "int32",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "unitId": {
+                    "format": "int32",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "customerId": {
+                    "format": "int32",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "email": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "mobilephone": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "workphone": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "firstName": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "lastName": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "isPersonalCustomerAdmin": {
+                    "type": "boolean",
+                    "readOnly": true
+                }
+            }
+        }
+    }
+}

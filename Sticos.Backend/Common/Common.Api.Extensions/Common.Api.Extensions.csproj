@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Configurations>Debug;Release;Production;Test</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+    <PackageReference Include="Sticos.Utilities" Version="1.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Api.Domain.Interfaces\Common.Api.Domain.Interfaces.csproj" />
+    <ProjectReference Include="..\Common.Api.Domain\Common.Api.Domain.csproj" />
+    <ProjectReference Include="..\Common.Api.Repositories.Legacy\Common.Api.Repositories.Legacy.csproj" />
+    <ProjectReference Include="..\..\Shared\Shared.Services\Shared.Services.csproj" />
+    <ProjectReference Include="..\Common.Api.Repositories\Common.Api.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>

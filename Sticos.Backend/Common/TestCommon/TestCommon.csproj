@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bogus" Version="23.0.3" />
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+    <PackageReference Include="FakeItEasy" Version="4.8.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Api.Domain.Interfaces\Common.Api.Domain.Interfaces.csproj" />
+    <ProjectReference Include="..\Common.Api.Domain\Common.Api.Domain.csproj" />
+    <ProjectReference Include="..\Common.Api.Repositories.Legacy\Common.Api.Repositories.Legacy.csproj" />
+    <ProjectReference Include="..\..\Shared\Shared.Services\Shared.Services.csproj" />
+    <ProjectReference Include="..\Common.Api.Repositories\Common.Api.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>

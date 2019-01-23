@@ -1,0 +1,15 @@
+<div class="btn-group" dropdown>
+  <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic">
+      <i class="fal fa-globe mr-1"></i>
+      <span class="badge badge-danger">5</span>
+  </button>
+  <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right show ng-star-inserted" role="menu" aria-labelledby="button-basic">
+    <li role="menuitem" *ngFor="let notification of notifications">
+      <a class="dropdown-item" href="#">{{ notification.title }}</a>
+    </li>
+    <div class="dropdown-divider" role="separator"></div>
+    <li role="menuitem">
+      <a class="dropdown-item" href="#">See all notifications</a>
+    </li>
+  </ul>
+</div>

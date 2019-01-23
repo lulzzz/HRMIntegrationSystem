@@ -1,0 +1,23 @@
+a {
+  cursor: pointer;
+}
+
+.card-header {
+  font-weight: 700;
+}
+
+.draft-item {
+  display: flow-root;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.draft-list:hover {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.delete-draft:hover {
+  cursor: pointer;
+  color: #ef3340;
+}

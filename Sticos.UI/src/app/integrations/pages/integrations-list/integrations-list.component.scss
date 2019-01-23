@@ -1,0 +1,57 @@
+.card {
+  width: 100%;
+}
+
+.table-hover tbody tr:hover th, .table-hover tbody tr:hover td {
+  background-color: var(--secondary) ;
+}
+
+.info-text {
+  color: var(--secondary);
+}
+
+.row {
+  margin-left: -5px;
+}
+
+.valid {
+  color: var(--success);
+}
+
+.invalid {
+  color: var(--orange);
+}
+
+::ng-deep .dx-datagrid-content .dx-datagrid-table .dx-row > td {
+  vertical-align: middle;
+}
+
+::ng-deep .dx-popover-wrapper .dx-popup-content {
+  padding: 0 !important;
+}
+
+.list-group {
+  border: none;
+
+  .list-group-item {
+    width: 200px;
+  }
+}
+.w-option-button{
+  width: 17px;
+}
+
+.btn-circle {
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 17.5px;
+  border: none;
+}
+
+::ng-deep .dx-widget {
+  margin-right: 2px;
+}

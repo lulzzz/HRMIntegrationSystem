@@ -1,0 +1,75 @@
+<a class="list-group-item list-group-item-action" (click)="isDashboardCollapsed = !isDashboardCollapsed" [class.active]="isDashboardActive">
+  <i class="fal fa-tachometer-alt fa-fw mr-3"></i> Dashboard
+  <span [hidden]="isDashboardCollapsed">
+    <i class="fal fa-angle-right fa-indicator float-right" aria-hidden="true"></i>
+  </span>
+  <span [hidden]="!isDashboardCollapsed">
+    <i class="fal fa-angle-down fa-indicator float-right" aria-hidden="true"></i>
+  </span>
+</a>
+<div [class.collapse]="!isDashboardCollapsed">
+  <a class="list-group-item list-group-item-action" *ngFor="let d of dahsConfigs;let index = index;" [routerLink]="d.link"
+    routerLinkActive="active">
+    <div *ngIf="!d.isInEdit">
+      <span class="ml-3">
+        <i class="fas fa-circle sub-menu-link-icon mr-2"></i> {{d.title}}
+      </span>
+      <div class="edit-overlay">
+        <button class="btn btn-default btn-small" (click)="startEdit($event, d)">
+          <i class="fal fa-pencil-alt"></i>
+        </button>
+        <button class="btn btn-default btn-small" (click)="deleteDashboard($event, d)" *ngIf="!d.isDefault">
+          <i class="fal fa-trash-alt"></i>
+        </button>
+      </div>
+    </div>
+    <div *ngIf="d.isInEdit">
+      <div class="form-group mb-0">
+        <div class="input-group input-group-sm">
+          <input type="text" name={{index}} class="form-control" [class.is-invalid]="!name.valid" (click)="$event.preventDefault();$event.stopPropagation();" [(ngModel)]="dahsConfigs[index].newTitle"
+            #name="ngModel" required>
+          <button class="input-group-append btn btn-default btn-append" (click)="saveEdit($event, d)" [disabled]="!name.valid">
+            <i class="fal fa-save"></i>
+          </button>
+          <button class="input-group-append btn btn-default btn-append" (click)="discardEdit($event, d)">
+            <i class="fal fa-times"></i>
+          </button>
+        </div>
+        <small [hidden]="name.valid || name.pristine" class="invalid-feedback">
+          Dashboard title cannot be empty
+        </small>
+      </div>
+    </div>
+  </a>
+  <div class="list-group-item text-center">
+    <button class="btn btn-default btn-sm" (click)="startAddingDashboard()">Add dashboard</button>
+  </div>
+</div>
+
+<dx-popup title="Add dashboard" maxWidth="400px" height="auto" [(visible)]="addDashboardPopupVisible">
+  <div *dxTemplate="let data of 'content'">
+    <form #addDashboardForm="ngForm" novalidate>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" [class.is-invalid]="!title.valid" id="title" name="title" [(ngModel)]="dashboardForm.title"
+          required #title="ngModel">
+        <small [hidden]="title.valid || title.pristine" class="invalid-feedback">
+          This field is required!
+        </small>
+      </div>
+      <div class="form-group">
+        <label for="copyFrom">Widget template:</label>
+        <select class="form-control" name="copyFrom" id="copyFrom" [(ngModel)]="dashboardForm.selectedTemplate">
+          <option [ngValue]="null">Empty</option>
+          <option *ngFor="let dc of dahsConfigs" [ngValue]="dc">{{dc.title}}</option>
+        </select>
+      </div>
+
+      <hr>
+      <div class="btn-toolbar">
+        <button class="btn btn-default mr-2" (click)="newDashboard();">Reset</button>
+        <button class="btn btn-primary" (click)="addDashboard()" [disabled]="!addDashboardForm.form.valid">Create dashboard</button>
+      </div>
+    </form>
+  </div>
+</dx-popup>

@@ -1,0 +1,28 @@
+<div class="h-100 container-fluid d-flex flex-column">
+    <div class="row">
+        <app-header class="col p-0"></app-header>
+    </div>
+    <div class="row h-100 mt-1">
+        <div class="col-auto p-0 side-menu" [class.open]="sideMenuOpen">
+            <div class="p-2">
+                <app-side-menu></app-side-menu>
+            </div>
+        </div>
+        <div class="col p-0 content">
+            <div class="p-2 h-100">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+
+<dx-popup [(visible)]="isIdle" [title]="'app.idle-title' | translate" [height]="'auto'" [maxWidth]="400">
+  <div *dxTemplate="let data of 'content'">
+    <div class="text-center">
+      <i class="fal fa-exclamation-triangle fa-10x"></i>
+      <h3>{{'app.idle-header' | translate}}</h3>
+      <p class="lead">{{countdownMessage$ | async}}</p>
+    </div>
+  </div>
+</dx-popup>
+<iframe #pingFrame width="1" height="1" marginheight="0" marginwidth="0" scrolling="no" frameborder="0" [src]="pingUrl | safe: 'resourceUrl'"></iframe>

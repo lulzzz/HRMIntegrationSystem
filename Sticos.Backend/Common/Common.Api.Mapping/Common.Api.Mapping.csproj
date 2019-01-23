@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Configurations>Debug;Release;Utv;Test;Production</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Api.Contracts\Common.Api.Contracts.csproj" />
+    <ProjectReference Include="..\Common.Api.Domain\Common.Api.Domain.csproj" />
+    <ProjectReference Include="..\Common.Api.Repositories\Common.Api.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>

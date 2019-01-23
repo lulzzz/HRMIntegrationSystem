@@ -1,0 +1,128 @@
+<ng-template #rt let-r="result" let-t="term">
+  {{ r.dataSet | formatDataset }}
+</ng-template>
+
+
+<div *ngIf="!isLoading">
+    <div class="raw">
+        <div class="matching-data-buttons">
+          <button class="btn btn-default" [disabled]="selectedItems" (click)="tryMatchAEmployees()">{{ 'integrations.mapping.common.try-match' | translate }}</button>
+          <button class="btn btn-default" [disabled]="selectedItems || !needToBeConfirmed" (click)="onSubmitMatch()">{{ 'integrations.mapping.common.confirm-mapping' | translate }}</button>
+          <button class="btn btn-default" [disabled]="selectedItems" (click)="onIgnoreMatch()">{{ 'integrations.mapping.common.ignore-mapping' | translate }}</button>
+          <button class="btn btn-default" [disabled]="selectedItems || !mappedRows" (click)="onDeleteMatch()">{{ 'integrations.mapping.common.remove-mapping' | translate }}</button>
+        </div>
+        <span *ngIf="needToBeConfirmed" class="info-text"> {{ needToBeConfirmed }} {{ 'integrations.mapping.common.need-to-be-confirmed' | translate }}</span>
+      </div>
+  <br>
+  <dx-data-grid id="notMatchedGrid" class="employee-mapping-grid" #notMatchedGrid [dataSource]="_matchedEmployees" hoverStateEnabled="true"
+    [showBorders]="true" [(selectedRowKeys)]="selectedRows" (onRowPrepared)="onRowPrepared($event)" (onSelectionChanged)="onSelectionChanged($event)">
+    <dxo-selection selectAllMode="page" showCheckBoxesMode="always" mode="multiple"></dxo-selection>
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxo-header-filter [visible]="true" [allowSearch]="true"></dxo-header-filter>
+    <dxo-paging [pageSize]="25"></dxo-paging>
+    <dxi-column dataField="employee" [calculateCellValue]="calculateCellValue" [caption]="'common.name' | translate" [allowFiltering]="true"
+      dataType="string" [calculateSortValue]="customNameSort" [allowSorting]="true" [allowHeaderFiltering]="false" sortOrder="asc"></dxi-column>
+    <dxi-column dataField="unitName" [caption]="'common.unit' | translate" cellTemplate="unitTemplate" [allowFiltering]="true"
+      dataType="string" [allowHeaderFiltering]="false"></dxi-column>
+    <dxi-column dataField="entityMatch" caption="External data" [caption]="'integrations.mapping.common.external-data' | translate"
+      [allowSorting]="false" cellTemplate="externalDataTemplate" [allowFiltering]="false" [allowHeaderFiltering]="false"></dxi-column>
+    <dxi-column dataField="stateInfo" [allowSorting]="true" [calculateSortValue]="customStateSort" [caption]="'integrations.mapping.common.state' | translate"
+      cellTemplate="stateTemplate" width="130" [allowFiltering]="false" [allowHeaderFiltering]="true" [filterOperations]="['contains']"
+      [calculateFilterExpression]="handleFilterState">
+      <dxo-header-filter [dataSource]="stateFilter"></dxo-header-filter>
+    </dxi-column>
+    <dxi-column dataField="this" alignment="center" width="70" caption="{{ 'common.options' | translate }}" [allowFiltering]="false"
+      [allowHeaderFiltering]="false" [allowSorting]="false" cellTemplate="actionsTemplate"></dxi-column>
+
+    <div *dxTemplate="let data of 'unitTemplate'">
+      {{ data.value }}
+    </div>
+
+    <div *dxTemplate="let data of 'externalDataTemplate'">
+      <dx-lookup searchEnabled="true" [closeOnOutsideClick]="true" [searchExpr]="searchItems" [showPopupTitle]="false" [items]="externalEmployees"
+        (onValueChanged)="onValueChanged($event, data)" itemTemplate="item" fieldTemplate="field" [value]="data.value.externalData"
+        searchTimeout="200">
+        <div *dxTemplate="let item of 'item'" [class.custom-disabled]="!item.validForUse">
+          <div class="d-flex justify-content-between">
+            <div class="mr-4">
+              <div *ngFor="let item of item.dataSet"> {{ ('integrations.mapping.user.external-data.' + item.code) | translate }} : {{ item.value }}</div>
+            </div>
+            <div class="not-valid-icon">
+              <i class="fal fa-exclamation-triangle fa-lg" *ngIf="!item.validForUse" id="triangle-icon-item-{{data.value.entityId}}-{{item.identifiers[0].value}}-{{item.identifiers[0].entity}}-employee"></i>
+            </div>
+          </div>
+          <dx-tooltip target="#triangle-icon-item-{{data.value.entityId}}-{{item.identifiers[0].value}}-{{item.identifiers[0].entity}}-employee"
+            showEvent="dxhoverstart" hideEvent="dxhoverend">
+            <div *dxTemplate="let data of 'content'" class="errors-tooltip">
+              <div>
+                <ul>
+                  <li *ngFor="let reasonEnum of item.notValidReasonsEnums" class="reasons-text-align">
+                    {{ ('enum.employeeerrors.' + reasonEnum) | translate}}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </dx-tooltip>
+        </div>
+        <div *dxTemplate="let item of 'field'">
+          <div *ngIf="item">
+            {{ item.dataSet | formatDataset}}
+          </div>
+        </div>
+      </dx-lookup>
+    </div>
+
+    <div *dxTemplate="let data of 'stateTemplate'">
+      <span [ngSwitch]="data.value.state">
+        <span *ngSwitchCase="1"> {{ 'integrations.mapping.common.mapped' | translate }}
+          <app-badge-component data-toggle="tooltip" data-placement="top" [title]="data.value.stateType | stateType" *ngIf="data.value.stateType"
+            [messageType]="('enum.statetype.' + data.value.stateType) | translate"></app-badge-component>
+        </span>
+        <span *ngSwitchCase="3"> {{ 'integrations.mapping.common.unsaved' | translate }}
+          <app-badge-component data-toggle="tooltip" data-placement="top" [title]="data.value.stateType | stateType" *ngIf="data.value.stateType"
+            [messageType]="('enum.statetype.' + data.value.stateType) | translate"></app-badge-component>
+        </span>
+        <span *ngSwitchCase="2"> {{ 'integrations.mapping.common.ignored' | translate }}
+          <app-badge-component data-toggle="tooltip" data-placement="top" [title]="data.value.stateType | stateType" *ngIf="data.value.stateType"
+            [messageType]="('enum.statetype.' + data.value.stateType) | translate"></app-badge-component>
+        </span>
+        <span *ngSwitchCase="4"> {{ 'integrations.mapping.common.nomap' | translate }}
+          <app-badge-component data-toggle="tooltip" data-placement="top" [title]="data.value.stateType | stateType" *ngIf="data.value.stateType"
+            [messageType]="('enum.statetype.' + data.value.stateType) | translate"></app-badge-component>
+        </span>
+        <span *ngSwitchCase="5"> {{ 'integrations.mapping.common.suggestion' | translate }}
+          <app-badge-component data-toggle="tooltip" data-placement="top" [title]="data.value.stateType | stateType" *ngIf="data.value.stateType"
+            [messageType]="('enum.statetype.' + data.value.stateType) | translate"></app-badge-component>
+        </span>
+      </span>
+    </div>
+
+    <div *dxTemplate="let data of 'actionsTemplate'">
+      <dx-tooltip target="#config-button-{{data.value.entityMapId}}-employee" [(visible)]="config[data.value.entityMapId]">
+        <div *dxTemplate="let tooltipData of 'content'">
+          <div class="list-group">
+            <button class="list-group-item list-group-item-action" (click)="tryMatchSingleEmployee(data.value.entityMapId)">
+              {{ 'integrations.mapping.common.try-match' | translate }}
+            </button>
+            <button class="list-group-item list-group-item-action" (click)="confirmSingleEmployee(data)" [disabled]="(data.value.stateInfo.state !== 5 && data.value.stateInfo.stateType === 5) || !needToBeConfirmed">
+              {{ 'integrations.mapping.common.confirm-mapping' | translate }}
+            </button>
+            <button class="list-group-item list-group-item-action" (click)="ignoreSingleEmployee(data)">
+              {{ 'integrations.mapping.common.ignore-mapping' | translate }}
+            </button>
+            <button class="list-group-item list-group-item-action" (click)="deleteSingleEmployee(data)" [disabled]="data.value.stateInfo.state !== 1 && data.value.stateInfo.state !== 2">
+              {{ 'integrations.mapping.common.remove-mapping' | translate }}
+            </button>
+            <button class="list-group-item list-group-item-action" (click)="resetSingleEmployee(data)">
+              {{ 'integrations.mapping.common.reset-mapping' | translate }}
+            </button>
+          </div>
+        </div>
+      </dx-tooltip>
+      <button id="config-button-{{data.value.entityMapId}}-employee" class="btn btn-default btn-circle" (click)="showOptions($event, data.value.entityMapId)">
+        <i class="fal fa-lg fa-ellipsis-v fa-2x"></i>
+      </button>
+    </div>
+  </dx-data-grid>
+
+</div>

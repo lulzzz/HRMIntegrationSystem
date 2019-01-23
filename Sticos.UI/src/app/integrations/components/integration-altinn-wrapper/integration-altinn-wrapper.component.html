@@ -1,0 +1,57 @@
+<div class="wrapper">
+  <div class="card card-info">
+    <div class="card-body">
+      <div class="integration-info justify-content-start">
+        <div class="justify-content-start float-right integration-edit-header">
+          <button class="btn btn-default" routerLink="/admin/integrations/">{{ 'common.back' | translate}}</button>
+        </div>
+        <div class="container float-left">
+          <h3>{{ "integrations.edit.integration-title" | translate }}</h3>
+          <br>
+          <div class="row">
+            <div class="col-xs-12 col-md-4 info-row-height">
+              <span style="font-weight: bold;">{{ 'common.company' | translate }}: </span>
+            </div>
+            <div class="col-xs-12 col-md-4 info-row-height" *ngIf="integration">{{ integration.companyName }}</div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 col-md-4 info-row-height">
+              <span style="font-weight: bold;">{{ 'common.category' | translate }}: </span>
+            </div>
+            <div class="col-xs-6 col-md-4 info-row-height" *ngIf="integration">
+              {{ ('enum.integrationcategoryenum.' + integration.integration.category) | translate }}</div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 col-md-4 info-row-height">
+              <span style="font-weight: bold;">{{ 'integrations.common.external-system' | translate }}: </span>
+            </div>
+            <div class="col-xs-6 col-md-4 info-row-height" *ngIf="integration">
+              {{ ('enum.externalgovernmentsystem.' + integration.integration.externalSystem) | translate }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 col-md-4 info-row-height">
+              <span style="font-weight: bold;">{{ 'common.status' | translate }}: </span>
+            </div>
+            <div class="col-xs-6 col-md-4 info-row-height" *ngIf="integration">
+              <i *ngIf="integration.integration.isActivated" class="far fa-check fa-lg valid"></i>
+              <i *ngIf="!integration.integration.isActivated" class="far fa-times fa-lg invalid"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="card">
+    <div class="card-body">
+      <tabset>
+          <tab [heading]="'integrations.edit.unit-mapping-tab' | translate">
+              <app-altinn-unit-mapping [(altinnMatchedUnits)]="altinnMatchedUnits"></app-altinn-unit-mapping>
+            </tab>
+        <tab [heading]="'integrations.edit.employee-mapping-tab' | translate"  (select)="onGetEmployees()">
+          <app-altinn-employee-mapping [employees]="employees"></app-altinn-employee-mapping>
+        </tab>
+      </tabset>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Altinn.Api.Client\Altinn.Api.Client.csproj" />
+    <ProjectReference Include="..\Altinn.Api.Contratcs\Altinn.Api.Contratcs.csproj" />
+    <ProjectReference Include="..\Altinn.Api.Domain\Altinn.Api.Domain.csproj" />
+    <ProjectReference Include="..\Altinn.Api.Repositories\Altinn.Api.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>

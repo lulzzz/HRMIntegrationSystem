@@ -1,0 +1,15 @@
+<nav aria-label="Page navigation" *ngIf="pages.length > 1">
+  <ul class="pagination">
+      <li [ngClass]="{ 'page-item': true, 'disabled': currentPage === 1 }">
+          <a class="page-link" href="javascript:void(0);" aria-label="Previous" (click)="prevPage()">
+              <span aria-hidden="true">&laquo;</span>
+          </a>
+      </li>
+      <li [ngClass]="{ 'page-item': true, 'active': page.number === currentPage }" *ngFor="let page of pages" [hidden]="!page.visible"><a class="page-link" href="javascript:void(0);" (click)="gotoPage(page.number)">{{page.label}}</a></li>
+      <li [ngClass]="{ 'page-item': true, 'disabled': currentPage === pages.length }">
+          <a class="page-link" href="javascript:void(0);" aria-label="Next" (click)="nextPage()">
+              <span aria-hidden="true">&raquo;</span>
+          </a>
+      </li>
+  </ul>
+</nav>

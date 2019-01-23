@@ -1,0 +1,279 @@
+﻿{
+  "news": {
+    "title": "News"
+  },
+  "pages": {
+    "search": {
+      "title": "Search",
+      "emptyResult": "The search returned no results. Pleaser try again with.",
+      "lawLink": "Show law",
+      "allIndexes": "All",
+      "searchField": {
+        "placeholder": "Search...",
+        "required": "Search phrase is required (minimum 3 characters, both lower and uppercase letters, numbers and special characters: §.-_ )."
+      },
+      "loadMore": {
+        "label": "Load more"
+      }
+    }
+  },
+  "integrations": {
+    "list": {
+      "title": "Integrations",
+      "add-button": "Add new",
+      "delete-dialog-question": "Do you really want to delete the integration?",
+      "deactivate-dialog-question": "Do you really want to deactivate the integration?",
+      "details": "Details"
+    },
+    "add": {
+      "title": "Add integration",
+      "current-step-title": "Current step",
+      "units-subtitle": "Units without organization number will be marked red and are not selectable",
+      "integrations-title": "Integrations",
+      "integration-validation": "Integration is not yet valid, do you want continue with mapping of entities?",
+      "organization-number": "Add organization number"
+    },
+    "edit": {
+      "exported-absences-button": "Exported absences",
+      "company-mapping-tab": "Companies",
+      "user-mapping-tab": "Users",
+      "absence-type-mapping-tab": "Absence types",
+      "employee-mapping-tab": "Employees",
+      "unit-mapping-tab": "Units",
+      "integration-title": "Integration"
+    },
+    "mapping": {
+      "absence": {
+        "external-absence-type": "External absence type",
+        "absence-code": "Absence code",
+        "external-data-group": {
+          "leave-type": "Leave type",
+          "absence-type": "Absence type"
+        },
+        "external-data": {
+          "NotSet": "Not set",
+          "Leave": "Leave",
+          "LayOff": "Layoff",
+          "Leave_with_parental_benefit": "Leave with parental benefit",
+          "Military_service_leave": "Military service leave",
+          "Educational_leave": "Educational leave",
+          "Compassionate_leave": "Compassionate leave"
+        },
+        "absence-id": "AbsenceId"
+      },
+      "user": {
+        "external-user": "External user",
+        "external-email": "External email",
+        "external-username": "External username",
+        "external-name": "External name",
+        "employee-mappings": "Employee mappings",
+        "external-data": {
+          "Name": "Name",
+          "UserName": "Username",
+          "Email": "Email",
+          "JobDescription": "Job description"
+        },
+        "firstName": "First name",
+        "lastName": "Last name",
+        "jobTitle": "Job title",
+        "phone": "Phone"
+      },
+      "unit": {
+        "external-data": {
+          "Name": "Name",
+          "OrganizationNumber": "Organization number"
+        }
+      },
+      "common": {
+        "confirmed": "Confirmed",
+        "not-confirmed": "Not confirmed",
+        "ignore-mapping": "Ignore",
+        "confirm-mapping": "Confirm",
+        "remove-mapping": "Remove",
+        "external-data": "External data",
+        "try-match": "Match automatic",
+        "changes": "Changes",
+        "state": "State",
+        "ignored": "Ignored",
+        "unconfirmed": "Unconfirmed",
+        "changed": "Changed",
+        "mapped": "Mapped",
+        "unmapped": "Unmapped",
+        "nomap": "No map",
+        "unsaved": "Not saved",
+        "suggestion": "Suggestion",
+        "automatic-match-warning": "entities was automatically matched.",
+        "automatic-match-found-warning": "Confirmation needed before further mappings",
+        "need-to-be-confirmed": "rows need to be confirmed",
+        "reset-mapping": "Reset"
+      },
+      "statetypemessages": {
+        "1": "This map is auto matched",
+        "2": "This map is manually matched",
+        "3": "This map is ignored",
+        "4": "This map is removed",
+        "5": "This is a suggestion"
+      }
+    },
+    "absence": {
+      "title": "Exported absence list",
+      "start-time": "Start",
+      "end-time": "End",
+      "lunch": "Lunch in minutes",
+      "message": "Message",
+      "full-day": "Full day",
+      "external-id": "ExternalId",
+      "local-absence-code": "Local absence code",
+      "not-exported": "Not exported",
+      "details-of-absence": "Details of absence"
+    },
+    "common": {
+      "external-system": "Choose system"
+    }
+  },
+  "settings": {
+    "user": {
+      "language-label": "Language"
+    }
+  },
+  "common": {
+    "settings": "Settings",
+    "yes": "Yes",
+    "no": "No",
+    "back": "Back",
+    "continue": "Continue",
+    "go-back": "Go back",
+    "complete": "Complete",
+    "start": "Start",
+    "company": "Company",
+    "category": "Choose category",
+    "units": "Choose unit",
+    "valid": "Valid",
+    "done": "Done",
+    "save": "Save",
+    "name": "Name",
+    "email": "Email",
+    "username": "Username",
+    "date": "Date",
+    "description": "Description",
+    "status": "Status",
+    "page-error-header": "Sorry, page not found.",
+    "page-error-wrong-url": "Have you typed the wrong address?",
+    "unit": "Unit",
+    "employee": "Employee",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "deactivate": "Deactivate",
+    "activate": "Activate",
+    "active": "Active",
+    "inactive": "Inactive",
+    "are-you-sure-question": "Are you sure?",
+    "last-changed": "Last changed",
+    "customer-id": "CustomerId",
+    "options": "Options",
+    "done-decription": "The integration will now be added. Next task will be to map entities in Sticos with the corresponding entities in the external system.",
+    "readingtime": "min read",
+    "invalid": "Invalid",
+    "external-systems-not-found": "External systems not found"
+  },
+  "no-access": {
+    "missing-permission": "Missing permission.",
+    "missing-permission-explanation": "You do not have access to this part of application."
+  },
+  "layout": {
+    "side-menu": {
+      "integrations-link": "Integrations",
+      "news": "News"
+    },
+    "header": {
+      "userDropDown": {
+        "changePassword": "Change password",
+        "myProfile": "See my login profile",
+        "customerId": "Customer id",
+        "logout": "Log out",
+        "information": "Information",
+        "remoteAssistance": "Remote assistance",
+        "knowledgebase": "Knowledgebase",
+        "settings": "Settings",
+        "support": "Support"
+      },
+      "search": {
+        "placeholder": "Search..."
+      }
+    },
+    "productSwitcher": {
+      "homepage": "Homepage",
+      "otherProducts": "Other products"
+    }
+  },
+  "messages": {
+    "integrations": {
+      "added-successfully": "The integration has been added"
+    }
+  },
+  "enum": {
+    "integrationcategoryenum": {
+      "1": "Time-/Absence systems",
+      "2": "Governmental systems"
+    },
+    "externalgovernmentsystem": {
+      "1": "DigiSyfo - Digital sick messages"
+    },
+    "externaleconomysystem": {
+      "2": "Uni Economy"
+    },
+    "absencetype": {
+      "0": "Self-certification",
+      "1": "Self-certification, baby sitter",
+      "2": "Self-certification, child",
+      "3": "Sick leave",
+      "4": "Sick leave, child",
+
+      "100": "Vacation",
+      "101": "Time off",
+
+      "200": "Welfare leave",
+      "201": "Parental leave",
+      "202": "Care leave",
+      "203": "Education leave",
+      "204": "Breastfeeding break",
+      "205": "Caregiving leave",
+      "206": "Military service",
+      "207": "Other leave",
+
+      "300": "Course, travel",
+      "301": "Meeting, travel",
+      "302": "Customervisit, travel",
+      "303": "Other, travel",
+
+      "400": "Unauthorized absence"
+    },
+    "absenceexportstatus": {
+      "0": "Unknown",
+      "5": "Initial",
+      "10": "Success",
+      "20": "Failed",
+      "30": "Obsolete"
+    },
+    "statetype": {
+      "0": "Unknown",
+      "1": "A",
+      "2": "M",
+      "3": "I",
+      "4": "R",
+      "5": "S"
+    },
+    "employeeerrors": {
+      "1": "Only a workpercentage of 100 is supported",
+      "2": "Only a normal week of 37.5 hours (60 minutes) a week is supported",
+      "3": "WorkRelation is not found",
+      "4": "Employment is not found",
+      "5": "Worker related to Employee is not found"
+    }
+  },
+  "app": {
+    "idle-title": "Timeout",
+    "idle-header": "You are idle!",
+    "idle-message": "You will be logged out in {{countdown}} seconds."
+  }
+}

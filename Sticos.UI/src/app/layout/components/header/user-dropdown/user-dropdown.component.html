@@ -1,0 +1,69 @@
+<div class="btn-group" dropdown>
+    <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic">
+        <i class="fal fa-user-circle"></i> {{ user.firstName }} {{ user.lastName }}
+    </button>
+    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+        <h6 class="dropdown-header">{{'layout.header.userDropDown.information' | translate}}</h6>
+        <span class="dropdown-item text-muted">{{'common.customer-id' | translate}} - {{ user.customerId }}</span>
+        <div class="dropdown-divider"></div>
+        <li role="menuitem">
+            <a class="dropdown-item" (click)="settingsPopupVisible = true;">
+                <i class="fal fa-cogs fa-fw mr-2"></i> {{'layout.header.userDropDown.settings' | translate}}
+            </a>
+        </li>
+        <div role="separator" class="dropdown-divider"></div>
+        <li role="menuitem">
+            <a class="dropdown-item" href="https://kunde.sticos.no/min-side/min-profil">
+                <i class="fal fa-user-circle fa-fw mr-2"></i> {{'layout.header.userDropDown.myProfile' | translate}}
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="dropdown-item" href="https://kunde.sticos.no/min-side/endre-passord">
+                <i class="fal fa-unlock-alt fa-fw mr-2"></i> {{'layout.header.userDropDown.changePassword' | translate}}
+            </a>
+        </li>
+
+        <div role="separator" class="dropdown-divider"></div>
+        <li role="menuitem">
+            <a class="dropdown-item" href="https://support.sticos.no/sticos-personal/kunnskapsbase">
+                <i class="fal fa-info-circle fa-fw mr-2"></i> {{'layout.header.userDropDown.knowledgebase' | translate}}
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="dropdown-item" href="http://download.sticos.no/~sticos/Redist/SticosRemote6.exe">
+                <i class="fal fa-life-ring fa-fw mr-2"></i> {{'layout.header.userDropDown.remoteAssistance' | translate}}
+            </a>
+        </li>
+
+        <div role="separator" class="dropdown-divider"></div>
+        <li role="menuitem">
+            <a class="dropdown-item" href="#">
+                <i class="fal fa-question-circle fa-fw mr-2"></i> {{'layout.header.userDropDown.support' | translate}}
+            </a>
+        </li>
+        <div role="separator" class="dropdown-divider"></div>
+        <li role="menuitem">
+            <a class="dropdown-item" (click)="logout()">
+                <i class="fal fa-sign-out-alt fa-fw mr-2"></i> {{'layout.header.userDropDown.logout' | translate}}
+            </a>
+        </li>
+    </ul>
+</div>
+
+<dx-popup class="popup" [maxWidth]="450" [height]="'auto'" [showTitle]="true" [title]="'common.settings' | translate"
+    [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="settingsPopupVisible">
+    <div *dxTemplate="let data of 'content'">
+        <div class="form-group">
+            <label for="language">{{'settings.user.language-label' | translate}}</label>
+            <select name="language" id="language" class="form-control" [ngModel]="currentLanguage" (ngModelChange)="languageChanged($event)">
+                <option *ngFor="let language of languages" [ngValue]="language">{{language.name}}</option>
+            </select>
+            <hr>
+            <div class="btn-toolbar text-right">
+                <button type="submit" class="btn btn-primary mr-2" (click)="saveSettings()">{{'common.save' |
+                    translate}}</button>
+                <button type="submit" class="btn btn-default" (click)="cancel()">{{'common.cancel' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</dx-popup>

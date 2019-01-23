@@ -1,0 +1,17 @@
+Ordrenummer: 15645
+Produkt: Buypass virksomhetssertifikater
+
+Serienr  : 1435568829075512466144341
+KeyUsage : Autentisering
+
+Serienr  : 1435591426240427709265768
+KeyUsage : Digital signatur
+
+Felles for sertifikatene
+Serialno : 810514442
+O        : BAREKSTAD OG YTTERVÅG REGNSKAP
+OU       : 
+CN       : BAREKSTAD OG YTTERVÅG REGNSKAP
+C        : NO
+
+pwd: vC4ZSiy4z6AC2iDL

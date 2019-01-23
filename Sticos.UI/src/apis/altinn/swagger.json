@@ -1,0 +1,205 @@
+{
+  "swagger": "2.0",
+  "info": { "version": "v1", "title": "Altinn API" },
+  "paths": {
+    "/{customerId}/externalsystems": {
+      "get": {
+        "tags": ["ExternalSystem"],
+        "operationId": "Search",
+        "consumes": [],
+        "produces": ["text/plain", "application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "Skip",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "Take",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/ICode" }
+            }
+          }
+        }
+      }
+    },
+    "/{customerId}/externalsystems/{id}/externaldata": {
+      "get": {
+        "tags": ["ExternalSystem"],
+        "operationId": "GetExternalData",
+        "consumes": [],
+        "produces": ["text/plain", "application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "enum": [0, 1]
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/ExternalData" }
+            }
+          }
+        }
+      }
+    },
+    "/{customerId}/navmessages": {
+      "get": {
+        "tags": ["NavMessages"],
+        "operationId": "Search",
+        "consumes": [],
+        "produces": ["text/plain", "application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "Namespace",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "IntegrationType",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "enum": [0, 1, 2]
+          },
+          {
+            "name": "WorkState",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "enum": [0, 1, 5, 10, 15]
+          },
+          {
+            "name": "BusinessOrganizationNumber",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Skip",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "Take",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/NavMessage" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ICode": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "uuid", "type": "string", "readOnly": true },
+        "type": { "type": "string", "readOnly": true },
+        "value": { "type": "string", "readOnly": true },
+        "order": { "format": "int32", "type": "integer", "readOnly": true },
+        "image": { "type": "string" }
+      }
+    },
+    "ExternalData": {
+      "type": "object",
+      "properties": {
+        "identifiers": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Identifier" },
+          "readOnly": true
+        },
+        "dataSet": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Data" },
+          "readOnly": true
+        },
+        "validForUse": { "type": "boolean" },
+        "notValidReasons": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "Identifier": {
+      "type": "object",
+      "properties": {
+        "value": { "type": "string" },
+        "entity": { "type": "string" },
+        "property": { "type": "string" }
+      }
+    },
+    "Data": {
+      "type": "object",
+      "properties": {
+        "code": { "type": "string" },
+        "value": { "type": "string" }
+      }
+    },
+    "NavMessage": {
+      "type": "object",
+      "properties": {
+        "integrationType": {
+          "format": "int32",
+          "enum": [0, 1, 2],
+          "type": "integer"
+        },
+        "workState": {
+          "format": "int32",
+          "enum": [0, 1, 5, 10, 15],
+          "type": "integer"
+        },
+        "businessOrganizationNumber": { "type": "string" }
+      }
+    }
+  }
+}

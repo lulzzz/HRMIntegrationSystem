@@ -1,0 +1,7 @@
+<!-- TODO: Add support for progressive loading -->
+<picture *ngIf="src !== ''">
+  <ng-container *ngFor="let source of sources">
+    <source [media]="source.media" [srcset]="source.srcset">
+  </ng-container>
+  <img [src]="src" [alt]="altText" [class]="cssClass" [style.width]="width" [style.height]="height" [style.objectFit]="'cover'" />
+</picture>

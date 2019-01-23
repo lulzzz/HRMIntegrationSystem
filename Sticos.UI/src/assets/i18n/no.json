@@ -1,0 +1,279 @@
+{
+  "news": {
+    "title": "Nyheter"
+  },
+  "pages": {
+    "search": {
+      "title": "Søk",
+      "emptyResult": "Søket ditt ga dessverre ingen treff. Vennligst prøv igjen.",
+      "lawLink": "Gå til loven",
+      "allIndexes": "Alle",
+      "searchField": {
+        "placeholder": "Søk...",
+        "required": "Søkefrase er påkrevd (minimum 3 tegn, store og små bokstaver, tall, spesialtegn: §.-_ )."
+      },
+      "loadMore": {
+        "label": "Last flere"
+      }
+    }
+  },
+  "integrations": {
+    "list": {
+      "title": "Integrasjoner",
+      "add-button": "Legg til",
+      "delete-dialog-question": "Vil du virkelig slette integrasjonen?",
+      "deactivate-dialog-question": "Vil du virkelig deaktivere integrasjonen?",
+      "details": "Detaljer"
+    },
+    "add": {
+      "title": "Legg til integrasjon",
+      "current-step-title": "Gjeldende steg",
+      "units-subtitle": "Enheter uten organisasjonsnummer vil bli merket rødt og er ikke valgbare",
+      "integrations-title": "Integrasjoner",
+      "integration-validation": "Integrasjonen er ikke ferdig satt opp enda, vil du fortsette med mapping av entititer?",
+      "organization-number": "Legge inn organisasjonsnummer"
+    },
+    "edit": {
+      "exported-absences-button": "Eksporterte fravær",
+      "company-mapping-tab": "Selskap",
+      "user-mapping-tab": "Brukere",
+      "absence-type-mapping-tab": "Fraværstyper",
+      "employee-mapping-tab": "Ansatte",
+      "unit-mapping-tab": "Enheter",
+      "integration-title": "Integrasjon"
+    },
+    "mapping": {
+      "absence": {
+        "external-absence-type": "Ekstern fraværstype",
+        "absence-code": "Fraværskode",
+        "external-data-group": {
+          "leave-type": "Permisjonstype",
+          "absence-type": "Fraværstype"
+        },
+        "external-data": {
+          "NotSet": "Ikke valgt",
+          "Leave": "Permisjon",
+          "LayOff": "Permittering",
+          "Leave_with_parental_benefit": "Permisjon med foreldrepenger",
+          "Military_service_leave": "Permisjon ved militærtjenste",
+          "Educational_leave": "Utdanningspermisjon",
+          "Compassionate_leave": "Veldferdspermisjon"
+        },
+        "absence-id": "FraværsId"
+      },
+      "user": {
+        "external-user": "Ekstern bruker",
+        "external-email": "Ekstern epost",
+        "external-username": "Eksternt brukernavn",
+        "external-name": "Eksternt navn",
+        "employee-mappings": "Ansattkoblinger",
+        "external-data": {
+          "Name": "Navn",
+          "UserName": "Brukernavn",
+          "Email": "E-post",
+          "JobDescription": "Stillingsbeskrivelse"
+        },
+        "firstName": "Fornavn",
+        "lastName": "Etternavn",
+        "jobTitle": "Jobbtittel",
+        "phone": "Telefon"
+      },
+      "unit": {
+        "external-data": {
+          "Name": "Navn",
+          "OrganizationNumber": "Organisasjonsnummer"
+        }
+      },
+      "common": {
+        "confirmed": "Bekreftet",
+        "not-confirmed": "Ikke bekreftet",
+        "ignore-mapping": "Ignorer",
+        "confirm-mapping": "Bekreft",
+        "remove-mapping": "Fjern",
+        "external-data": "Eksterne data",
+        "try-match": "Match automatisk",
+        "changes": "Endringer",
+        "state": "Status",
+        "ignored": "Ignorer",
+        "unconfirmed": "Ubekreftet",
+        "changed": "Endret",
+        "mapped": "Koblet",
+        "unmapped": "Ikke koblet",
+        "nomap": "Ingen kobling",
+        "unsaved": "Ikke lagret",
+        "suggestion": "Forslag",
+        "automatic-match-warning": "entiteter ble automatisk koblet.",
+        "automatic-match-found-warning": "Bekreftelse trengs før fler koblinger legges til",
+        "need-to-be-confirmed": "rader må bekreftes",
+        "reset-mapping": "Tilbakestill"
+      },
+      "statetypemessages": {
+        "1": "Koblingen er automatisk koblet",
+        "2": "Manuelt koblet",
+        "3": "Ignorert, ingen kobling",
+        "4": "Koblingen er fjernet",
+        "5": "Dette er et forslag"
+      }
+    },
+    "absence": {
+      "title": "Liste over eksporterte fravær",
+      "start-time": "Start",
+      "end-time": "Slutt",
+      "lunch": "Lunsj i minutter",
+      "message": "Melding",
+      "full-day": "Full dag",
+      "external-id": "ExternId",
+      "local-absence-code": "Lokal fraværskode",
+      "not-exported": "Ikke eksportert",
+      "details-of-absence": "Detaljer om fravær"
+    },
+    "common": {
+      "external-system": "Velg system"
+    }
+  },
+  "settings": {
+    "user": {
+      "language-label": "Språk"
+    }
+  },
+  "common": {
+    "settings": "Innstillinger",
+    "yes": "Ja",
+    "no": "Nei",
+    "back": "Tilbake",
+    "continue": "Fortsett",
+    "go-back": "Gå tilbake",
+    "complete": "Fullfør",
+    "start": "Start",
+    "company": "Selskap",
+    "category": "Velg kategori",
+    "units": "Velg enhet",
+    "valid": "Gyldig",
+    "done": "Ferdig",
+    "save": "Lagre",
+    "name": "Navn",
+    "email": "Epost",
+    "username": "Brukernavn",
+    "date": "Dato",
+    "description": "Beskrivelse",
+    "status": "Status",
+    "page-error-header": "Beklager, siden ble ikke funnet",
+    "page-error-wrong-url": "Har du skrevet feil adresse?",
+    "unit": "Enhet",
+    "employee": "Ansatt",
+    "cancel": "Avbryt",
+    "delete": "Slette",
+    "deactivate": "Deaktiver",
+    "activate": "Aktiver",
+    "active": "Aktiv",
+    "inactive": "Inaktiv",
+    "are-you-sure-question": "Er du sikker?",
+    "customer-id": "KundeId",
+    "last-changed": "Sist endret",
+    "options": "Valg",
+    "done-decription": "Integrasjonen vil nå bli lagt til. Neste oppgave vil være å koble sammen entitetene i Sticos og det eksterne systemet.",
+    "readingtime": "min lesing",
+    "invalid": "Ugyldig",
+    "external-systems-not-found": "Eksterne systemer ikke funnet"
+  },
+  "no-access": {
+    "missing-permission": "Mangler tilgang.",
+    "missing-permission-explanation": "Du har ikke tilgang til denne delen av applikasjonen."
+  },
+  "layout": {
+    "side-menu": {
+      "integrations-link": "Integrasjoner",
+      "news": "Nyheter"
+    },
+    "header": {
+      "userDropDown": {
+        "changePassword": "Bytt passord",
+        "myProfile": "Se min påloggingbruker",
+        "customerId": "Kundenummer",
+        "logout": "Logg ut",
+        "information": "Informasjon",
+        "remoteAssistance": "Fjernhjelp",
+        "knowledgebase": "Kunnskapsbase",
+        "settings": "Innstillinger",
+        "support": "Support"
+      },
+      "search": {
+        "placeholder": "Søk..."
+      }
+    },
+    "productSwitcher": {
+      "homepage": "Hjemmeside",
+      "otherProducts": "Andre produkter"
+    }
+  },
+  "messages": {
+    "integrations": {
+      "added-successfully": "Integrasjonen er lagt til"
+    }
+  },
+  "enum": {
+    "integrationcategoryenum": {
+      "1": "Timereg-/Fraværssystemer",
+      "2": "Statlige systemer"
+    },
+    "externalgovernmentsystem": {
+      "1": "DigiSyfo - Digital sykemelding"
+    },
+    "externaleconomysystem": {
+      "2": "Uni Economy"
+    },
+    "absencetype": {
+      "0": "Egenmelding, egen sykdom",
+      "1": "Egenmelding, syk barnepasser",
+      "2": "Egenmelding, sykt barn",
+      "3": "Sykmelding",
+      "4": "Sykefravær, sykt barn",
+
+      "100": "Ferie",
+      "101": "Avspasering",
+
+      "200": "Velferdspermisjon",
+      "201": "Foreldrepermisjon",
+      "202": "Omsorgspermisjon",
+      "203": "Utdanningspermisjon",
+      "204": "Ammefri",
+      "205": "Pleie og omsorg for pårørende",
+      "206": "Militærtjeneste",
+      "207": "Annet, permisjon",
+
+      "300": "Kurs, reise",
+      "301": "Møte, reise",
+      "302": "Kundebesøk, reise",
+      "303": "Annet, reise",
+
+      "400": "Ugyldig fravær"
+    },
+    "absenceexportstatus": {
+      "0": "Ukjent",
+      "5": "Første",
+      "10": "Suksess",
+      "20": "Mislyktes",
+      "30": "Foreldet"
+    },
+    "statetype": {
+      "0": "Unknown",
+      "1": "A",
+      "2": "M",
+      "3": "I",
+      "4": "R",
+      "5": "S"
+    },
+    "employeeerrors": {
+      "1": "Bare en arbeidsandel på 100% støttes",
+      "2": "Bare en normal uke på 37,5t i uken støttes",
+      "3": "Arbeidsforhold koblet til personen/worker er ikke funnet",
+      "4": "Ansettelsesforhold koblet til den ansaette er ikke funnet",
+      "5": "Personen/Worker koblet til den ansatte er ikke funnet"
+    }
+  },
+  "app": {
+    "idle-title": "Pause",
+    "idle-header": "Du er inaktiv!",
+    "idle-message": "Du blir logget ut om {{countdown}} sekunder."
+  }
+}

@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.1.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="5.0.1" />
+    <PackageReference Include="FakeItEasy" Version="4.8.1" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="2.1.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Include="NUnit" Version="3.10.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Integrations.Api.Extensions\Integrations.Api.Extensions.csproj" />
+    <ProjectReference Include="..\Integrations.Api.Mapping\Integrations.Api.Mapping.csproj" />
+    <ProjectReference Include="..\Integrations.Api\Integrations.Api.csproj" />
+    <ProjectReference Include="..\..\Shared\Shared.TestCommon\Shared.TestCommon.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="oldStuff\Integrations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\Shared\Shared.TestCommon\Certificates\signingcertificate.pfx" Link="signingcertificate.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Sticos.Personal.MessageContracts">
+      <HintPath>..\..\lib\Sticos.Personal.MessageContracts.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

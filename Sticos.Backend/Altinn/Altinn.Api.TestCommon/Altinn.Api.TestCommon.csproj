@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FakeItEasy" Version="4.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Altinn.Api.Client\Altinn.Api.Client.csproj" />
+    <ProjectReference Include="..\Altinn.Api.Domain\Altinn.Api.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,47 @@
+<form [formGroup]="form" novalidate (ngSubmit)="doSearch()">
+  <div class="query-container">
+    <div class="input-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="{{ 'pages.search.searchField.placeholder' | translate }}"
+        formControlName="query"
+      />
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">
+          <span class="fa fa-search" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+    <div *ngIf="form.controls.query.touched && !form.controls.query.valid">
+      <small class="text-danger">{{
+        'pages.search.searchField.required' | translate
+      }}</small>
+    </div>
+  </div>
+
+  <div  
+    #filterContainer
+    *ngIf="result && indexes && indexes.length > 0"
+    class="filter-container"
+  >
+    <div id="material-tabs">
+      <a
+        id="tab-1-tab"
+        [ngClass]="{ active: currentIndex == -1 }"
+        (click)="setCurrentIndex(-1)"
+        >{{ 'pages.search.allIndexes' | translate }}</a
+      >
+      <ng-container *ngFor="let indexItem of indexes; let i = index">
+        <a
+          *ngIf="indexItem.count > 0"
+          id="tab{{i}}-tab"
+          [ngClass]="{ active: currentIndex === indexItem.type }"
+          (click)="setCurrentIndex(indexItem.type)"
+          >{{ indexItem.name }}
+          <span class="count">({{ indexItem.count }})</span>
+        </a>
+      </ng-container>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,16 @@
+<dx-data-grid id="notMatchedGrid" class="employee-mapping-grid" #notMatchedGrid [dataSource]="employees" hoverStateEnabled="true"
+  [showBorders]="true">
+  <dxo-selection selectAllMode="page" showCheckBoxesMode="always" mode="multiple"></dxo-selection>
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+  <dxo-header-filter [visible]="true" [allowSearch]="true"></dxo-header-filter>
+  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxi-column dataField="firstName" [caption]="'integrations.mapping.user.firstName' | translate" dataType="string"></dxi-column>
+  <dxi-column dataField="lastName" [caption]="'integrations.mapping.user.lastName' | translate" dataType="string"></dxi-column>
+  <dxi-column dataField="email" [caption]="'common.email' | translate" dataType="string"></dxi-column>
+  <dxi-column dataField="nationalIdentificationNumber" cellTemplate="validTemplate" [caption]="'common.valid' | translate"></dxi-column>
+
+  <div *dxTemplate="let data of 'validTemplate'">
+      <app-badge-component [messageType]="'common.valid' | translate" [type]="'success'" *ngIf="data.value"></app-badge-component>
+      <app-badge-component [messageType]="'common.invalid' | translate" [type]="'danger'" *ngIf="!data.value"></app-badge-component>
+  </div>
+</dx-data-grid>

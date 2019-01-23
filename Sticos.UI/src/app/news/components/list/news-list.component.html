@@ -1,0 +1,12 @@
+<ng-container *ngIf="items">
+  <div class="row">
+    <ng-container *ngFor="let item of items; index as i">
+      <div [class]="i === 0 ? 'col-12' : 'col-sm-12 col-md-6'">
+        <app-news-item
+          [post]="item"
+          [size]="i === 0 ? 'main' : 'small'"
+        ></app-news-item>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+    <PackageReference Include="MassTransit" Version="5.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Timereg.Api.Domain\Timereg.Api.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Sticos.Personal.MessageContracts">
+      <HintPath>..\..\lib\Sticos.Personal.MessageContracts.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

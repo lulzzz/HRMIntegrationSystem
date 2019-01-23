@@ -1,0 +1,419 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Sticos Integrations Api",
+    "description": "Swagger Sticos Integrations Api"
+  },
+  "paths": {
+    "/{customerId}/entitymaps": {
+      "get": {
+        "tags": ["EntityMap"],
+        "operationId": "Get",
+        "consumes": [],
+        "produces": ["text/plain", "application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "IntegrationId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "LocalId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "EntityName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ExternalProperty",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ExternalEntity",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "UnitId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "ExternalSystemId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "IntegrationCategory",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/EntityMap"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["EntityMap"],
+        "operationId": "Update",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": ["text/plain", "application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "entityMaps",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/EntityMap"
+              }
+            }
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/EntityMap"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{customerId}/integrations": {
+      "get": {
+        "tags": ["Integration"],
+        "operationId": "Search",
+        "consumes": [],
+        "produces": ["text/plain", "application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "UnitId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "Category",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "ExternalSystemId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Integration"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Integration"],
+        "operationId": "Update",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": ["text/plain", "application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "integration",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Integration"
+            }
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Integration"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Integration"],
+        "operationId": "Create",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": ["text/plain", "application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "integration",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Integration"
+            }
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Integration"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Integration"],
+        "operationId": "Delete",
+        "consumes": [],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/{customerId}/integrations/{id}": {
+      "get": {
+        "tags": ["Integration"],
+        "operationId": "Get",
+        "consumes": [],
+        "produces": ["text/plain", "application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Integration"
+            }
+          }
+        }
+      }
+    },
+    "/{customerId}/integrations/categories": {
+      "get": {
+        "tags": ["IntegrationCategory"],
+        "operationId": "Get",
+        "consumes": [],
+        "produces": ["text/plain", "application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ICode"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "EntityMap": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "integrationId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "entityName": {
+          "type": "string"
+        },
+        "entityId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "externalValue": {
+          "type": "string"
+        },
+        "externalEntity": {
+          "type": "string"
+        },
+        "externalPropertyName": {
+          "type": "string"
+        },
+        "ignored": {
+          "type": "boolean"
+        },
+        "deleted": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Integration": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isActivated": {
+          "type": "boolean"
+        },
+        "unitId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "category": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "externalSystem": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "ICode": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string",
+          "readOnly": true
+        },
+        "type": {
+          "type": "string",
+          "readOnly": true
+        },
+        "value": {
+          "type": "string",
+          "readOnly": true
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        },
+        "image": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

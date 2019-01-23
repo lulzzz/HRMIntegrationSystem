@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Api.ProxyClient\Common.Api.ProxyClient.csproj" />
+    <ProjectReference Include="..\..\Integrations\Integrations.Api.ProxyClient\Integrations.Api.ProxyClient.csproj" />
+    <ProjectReference Include="..\..\Shared\Shared.Interfaces\Shared.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Shared\Shared.Services\Shared.Services.csproj" />
+    <ProjectReference Include="..\Timereg.Api.Domain\Timereg.Api.Domain.csproj" />
+    <ProjectReference Include="..\Timereg.Api.Repositories\Timereg.Api.Repositories.csproj" />
+    <ProjectReference Include="..\Timereg.Api.Services\Timereg.Api.Services.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,40 @@
+.card {
+  width: 100%;
+}
+
+.table-hover tbody tr:hover th,
+ .table-hover tbody tr:hover td {
+  background-color: var(--secondary) ;
+}
+
+.row {
+  margin-left: -5px;
+}
+
+.status-success {
+  color: var(--green);
+}
+
+.status-failed {
+  color: var(--red);
+}
+
+.absence-export-status {
+  font-size: 20px;
+}
+
+.absence-export-retry {
+  cursor: pointer;
+  color: var(--danger);
+}
+
+::ng-deep .master-detail-caption {
+  padding: 0 0 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+::ng-deep .dx-widget {
+  margin-right: 2px;
+  margin-top: 5px;
+}

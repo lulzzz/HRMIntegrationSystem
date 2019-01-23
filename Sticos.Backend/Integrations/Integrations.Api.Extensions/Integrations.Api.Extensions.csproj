@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Api.ProxyClient\Common.Api.ProxyClient.csproj" />
+    <ProjectReference Include="..\Integrations.Api.MessageBus\Integrations.Api.MessageBus.csproj" />
+    <ProjectReference Include="..\Integrations.Api.Repositories\Integrations.Api.Repositories.csproj" />
+    <ProjectReference Include="..\Integrations.Api.Domain\Integrations.Api.Domain.csproj" />
+    <ProjectReference Include="..\..\Shared\Shared.Services\Shared.Services.csproj" />
+  </ItemGroup>
+
+</Project>

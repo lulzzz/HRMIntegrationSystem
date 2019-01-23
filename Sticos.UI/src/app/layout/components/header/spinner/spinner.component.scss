@@ -1,0 +1,84 @@
+.pace {
+    -webkit-pointer-events: none;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  .pace-inactive {
+    display: none;
+  }
+  
+  .pace .pace-progress {
+    background: #f7a700;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    right: 100%;
+    width: 100%;
+    height: 3px;
+  }
+  
+  .pace .pace-progress-inner {
+    display: block;
+    position: absolute;
+    right: 0px;
+    width: 100px;
+    height: 100%;
+    box-shadow: 0 0 10px #f7a700, 0 0 5px #f7a700;
+    opacity: 1.0;
+    -webkit-transform: rotate(3deg) translate(0px, -4px);
+    -moz-transform: rotate(3deg) translate(0px, -4px);
+    -ms-transform: rotate(3deg) translate(0px, -4px);
+    -o-transform: rotate(3deg) translate(0px, -4px);
+    transform: rotate(3deg) translate(0px, -4px);
+  }
+  
+  .pace .pace-activity {
+    display: block;
+    position: fixed;
+    z-index: 2000;
+    top: 14px;
+    right: 50%;
+    width: 24px;
+    height: 24px;
+    border: 1px solid white;
+    border-radius: 12px;
+    background-color: white;
+    background-image:
+    url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkQzOERBMUI1RDAzQjExRTdBNjIwOENDMTFFMEY5Rjc0IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkQzOERBMUI2RDAzQjExRTdBNjIwOENDMTFFMEY5Rjc0Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RDM4REExQjNEMDNCMTFFN0E2MjA4Q0MxMUUwRjlGNzQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RDM4REExQjREMDNCMTFFN0E2MjA4Q0MxMUUwRjlGNzQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz61UhtrAAACYElEQVR42oyWT0hUURTG3wyTCUlEEeWqLMMIWgQDETxRQghXo4uCpAkh0BZim6DC3BiJCyERNw0GkiGkC3UVQUkLw43UIpIksVZRiwaJCWqK7HeG84bXNPe8d+Djnrl/vnPvd87c+xKeYXsXnjbRdIGz4IR06dAWWAPPwXC+49wPF0fKQdxIMwoyjnV7wAHwDvy0NpmoQn6FZgLUGuuWQTs7L9T42Tb8Ht3sw+Ly9IIzAOS3ae54tv0GTZBvQn4Jf7pifIQgt/4LoDuf9KLtJeQ+5DvwP4fyErZeguTESYY0n/Di2Ya2uxzkYuNs4Hg5gCa0NmaAP9oWQNExZ6dIVQqgpZiJQbwNXoM5+YEEkosVY35GTpHSOo+yWXAD7T9W9EvFtBjrulL6J7LsPsRX2c0xcFf7pjjBe9p5cM9Y25pAoq9GsuRPdLAw+mg/7SrYrf3fQFqCEPQTfr1jfT5pkIu9YfdyLXSHyD31u9X/YN02yQh5ijHyU2MNSoC8Md4QaK6yeCGJppBH7qSTxvqSRG+NCfXk6JAmNC03pyKtfSNa8y5bkyp6AZqNSZ1gTAkHSpr42cPgMe6FCPmW5AQzEZM6ymL72XbwCnczBrnYTJIqkTt90Zh0BpmCd+M8OFXtmq9ii5x6Paiim8bDIVVSFyqKOCYv3PXyAj1Fv6sSwHf1G2MG6GP3G//siCC54AassGuM/UL7I/inY5APQv7AejIlqZf15cpB/gxykegJ8CNk6QuTe1HJgljGL4IhcNRKqGgeyBL5VVHxcMjL9AXs06+JIC/y2bIkpSjV4iL4K8AAS7S5uU2Rc28AAAAASUVORK5CYII=');
+    -webkit-animation: pace-spinner 1500ms  infinite cubic-bezier(0.645, 0.045, 0.355, .9);
+    -moz-animation: pace-spinner 1500ms  infinite cubic-bezier(0.645, 0.045, 0.355, .9);
+    -ms-animation: pace-spinner 1500ms  infinite cubic-bezier(0.645, 0.045, 0.355, .9);
+    -o-animation: pace-spinner 1500ms  infinite cubic-bezier(0.645, 0.045, 0.355, .9);
+    animation: pace-spinner 1500ms  infinite cubic-bezier(0.645, 0.045, 0.355, .9);
+  }
+  
+  @-webkit-keyframes pace-spinner {
+    0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+  }
+  @-moz-keyframes pace-spinner {
+    0% { -moz-transform: rotate(0deg); transform: rotate(0deg); }
+    100% { -moz-transform: rotate(360deg); transform: rotate(360deg); }
+  }
+  @-o-keyframes pace-spinner {
+    0% { -o-transform: rotate(0deg); transform: rotate(0deg); }
+    100% { -o-transform: rotate(360deg); transform: rotate(360deg); }
+  }
+  @-ms-keyframes pace-spinner {
+    0% { -ms-transform: rotate(0deg); transform: rotate(0deg); }
+    100% { -ms-transform: rotate(360deg); transform: rotate(360deg); }
+  }
+  @keyframes pace-spinner {
+    0% { transform: rotate(0deg); transform: rotate(0deg); }
+    100% { transform: rotate(360deg); transform: rotate(360deg); }
+  }
+  
+  @media (max-width: 767px) {
+      .pace .pace-activity {
+          display: none;
+      }
+  }
+    

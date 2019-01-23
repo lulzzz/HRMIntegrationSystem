@@ -1,0 +1,19 @@
+<h1>{{ 'pages.newsadmin.edit.title' | translate }}</h1>
+
+<div class="card card-page">
+
+  <div class="row">
+    <div class="col-12">
+
+      <ng-container *ngIf="item$ | async as item; else loading">
+        <app-news-admin-edit [item]="item"></app-news-admin-edit>
+      </ng-container>
+
+      <ng-template #loading>
+        <app-news-admin-edit-skeleton></app-news-admin-edit-skeleton>
+      </ng-template>
+
+    </div>
+  </div>
+
+</div>

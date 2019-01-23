@@ -1,0 +1,19 @@
+<div id="search-container" class="pt-3 pb-3">
+  <div class="col-12 form-container"><app-search-form></app-search-form></div>
+
+  <ng-container *ngIf="isLoading !== true; else: loading">
+    <ng-container *ngIf="result">
+      <div class="col-12">
+        <div *ngIf="error && error !== ''" class="alert alert-danger">
+          <span class="glyphicon glyphicon-warning-sign"></span> {{ error }}
+        </div>
+
+        <app-search-result></app-search-result>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #loading>
+    <app-search-loading></app-search-loading>
+  </ng-template>
+</div>

@@ -1,0 +1,31 @@
+<div class="list-container">
+  <div class="stats" *ngIf="stats !== ''">{{ stats }}</div>
+
+  <app-search-pager
+    *ngIf="showPager"
+    [total]="total"
+    [pageSize]="limit"
+    [currentPage]="getCurrentPage()"
+    (pageChange)="pageChange($event)"
+  ></app-search-pager>
+
+  <div class="list">
+    <app-search-result-list [items]="items"></app-search-result-list>
+    <ng-container *ngIf="showLoadMore && !isLoading">
+      <div class="text-center mt-2 mb-2">
+        <button class="btn btn-outline-info" (click)="loadMore()">
+          {{ 'pages.search.loadMore.label' | translate }}
+        </button>
+      </div>
+    </ng-container>
+    <app-search-loading *ngIf="isLoading"></app-search-loading>
+  </div>
+
+  <app-search-pager
+    *ngIf="showPager"
+    [total]="total"
+    [pageSize]="limit"
+    [currentPage]="getCurrentPage()"
+    (pageChange)="pageChange($event)"
+  ></app-search-pager>
+</div>

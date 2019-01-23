@@ -1,0 +1,25 @@
+<div *ngIf="items.length > 0; else: empty">
+  <div *ngFor="let item of items" class="item">
+    <h4>
+      <span class="text-info fa fa-{{ getIcon(item?.index?.type) }}"></span
+      >&nbsp;
+      <a [href]="item.link" [target]="item.linkTarget">{{ item.title }}</a>
+    </h4>
+    <span class="index">{{ item.index.name }}</span>
+    <span class="lawlink" *ngIf="item.additionalLink">
+      <a
+        [href]="item.additionalLink.href"
+        [target]="item.additionalLink.target"
+        >{{ 'pages.search.lawLink' | translate }}</a
+      >
+    </span>
+    <p [innerHTML]="item.summary | safe: 'html'"></p>
+  </div>
+</div>
+
+<ng-template #empty>
+  <div class="alert alert-info">
+    <span class="fa fa-info-circle"></span>
+    {{ 'pages.search.emptyResult' | translate }}
+  </div>
+</ng-template>

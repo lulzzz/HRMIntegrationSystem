@@ -1,0 +1,37 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "paths": {
+      "@sticos/apis/common": [
+        "src/apis/common/public_api"
+      ],
+      "@sticos/apis/timereg": [
+        "src/apis/timereg/public_api"
+      ],
+      "@sticos/apis/altinn": [
+        "src/apis/altinn/public_api"
+      ],
+      "@sticos/apis/integrations": [
+        "src/apis/integrations/public_api"
+      ],
+      "@sticos/ui/integrations": [
+        "src/app/modules/integrations/public-api"
+      ]
+    }
+  }
+}

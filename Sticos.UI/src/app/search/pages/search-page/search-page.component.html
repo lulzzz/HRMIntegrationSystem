@@ -1,0 +1,20 @@
+<h1>{{ 'pages.search.title' | translate }}</h1>
+
+<div class="card card-page container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <app-search
+        (filter)="filter($event)"
+        (search)="search($event)"
+        (reset)="reset()"
+        (navigate)="navigate($event)"
+        [indexes]="indexes"
+        [result]="result$ | async"
+        [initialQuery]="query"
+        [pagingType]="pagingType"
+        [limit]="limit"
+        [offset]="offset"
+      ></app-search>
+    </div>
+  </div>
+</div>

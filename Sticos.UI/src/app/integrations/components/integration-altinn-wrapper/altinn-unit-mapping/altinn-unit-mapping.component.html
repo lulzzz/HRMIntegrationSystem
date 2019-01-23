@@ -1,0 +1,24 @@
+<div *ngIf="!isLoading">
+  <dx-data-grid id="altinnNotMatchedGrid" #altinnNotMatchedGrid [dataSource]="_altinnMatchedUnits" hoverStateEnabled="true" [showBorders]="true">
+    <dxo-paging [pageSize]="10"></dxo-paging>
+    <dxi-column dataField="unit.name"  [caption]="'common.unit' | translate" [allowFiltering]="true"></dxi-column>
+    <dxi-column dataField="entityMatch" [caption]="'integrations.mapping.common.external-data' | translate"></dxi-column>
+    <dxi-column dataField="this" alignment="center" width="70" caption="{{ 'common.options' | translate }}"  cellTemplate="actionsTemplate"></dxi-column>
+
+    <div *dxTemplate="let data of 'actionsTemplate'">
+      <dx-tooltip target="#config-button-{{data.value.entityMapId}}-unit" [(visible)]="config[data.value.entityMapId]">
+        <div *dxTemplate="let tooltipData of 'content'">
+          <div class="list-group">          
+          </div>
+        </div>
+      </dx-tooltip>
+      <button id="config-button-{{data.value.entityMapId}}-unit" class="btn btn-default btn-circle" (click)="showOptions($event, data.value.entityMapId)">
+        <i class="fal fa-lg fa-ellipsis-v  fa-2x"></i>
+      </button>
+    </div>
+  </dx-data-grid>
+  <div class="raw">
+    <div class="matching-data-buttons">
+    </div>
+  </div>
+</div>

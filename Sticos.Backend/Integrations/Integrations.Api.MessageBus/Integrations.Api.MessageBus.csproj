@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit" Version="5.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Shared.MessageBus\Shared.MessageBus.csproj" />
+    <ProjectReference Include="..\Integrations.Api.Domain\Integrations.Api.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Sticos.Personal.MessageContracts">
+      <HintPath>..\..\lib\Sticos.Personal.MessageContracts.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

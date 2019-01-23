@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Configurations>Debug;Release;Utv;Test;Production</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1998</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Shared.Contracts\Shared.Contracts.csproj" />
+    <ProjectReference Include="..\..\Shared\Shared.Exceptions\Shared.Exceptions.csproj" />
+    <ProjectReference Include="..\..\Shared\Shared.Interfaces\Shared.Interfaces.csproj" />
+    <ProjectReference Include="..\Common.Api.Contracts\Common.Api.Contracts.csproj" />
+    <ProjectReference Include="..\Common.Api.Domain.Interfaces\Common.Api.Domain.Interfaces.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Sticos.Personal.MessageContracts">
+      <HintPath>..\..\lib\Sticos.Personal.MessageContracts.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

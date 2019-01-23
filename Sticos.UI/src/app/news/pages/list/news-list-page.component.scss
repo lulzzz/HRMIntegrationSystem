@@ -1,0 +1,56 @@
+p {
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+}
+
+p.post-author,
+p.post-date {
+  font-size: 16px;
+}
+
+.card {
+  cursor: pointer;
+}
+
+.image-tag {
+  float: left;
+  position: absolute;
+  background-color: #003b5c;
+  color: white;
+  font-weight: 600;
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-bottom-right-radius: calc(0.25rem - 1px);
+}
+
+.skeletonBlogPost div h2 {
+  opacity: 0.8;
+  height: 2.2rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #dddddd , #EEEEEE);
+  animation: pulse 1s infinite;
+}
+
+.skeletonBlogPost div p {
+  opacity: 0.5;
+  height: 1.1rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #dddddd , #EEEEEE);
+  animation: pulse 1s infinite;
+}
+
+.skeletonBlogPost > div > h2 {
+  width: 55%;
+}
+
+.skeletonBlogPost > div > h3 {
+  width: 70%;
+}
+
+.skeletonBlogPost div p {
+  width: 100%;
+}
+
+.skeletonBlogPost div p.post-date,
+.skeletonBlogPost div p.post-author {
+  width: 30%;
+}

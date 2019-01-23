@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.DotNet.Xdt.Tools" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.2" />
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.1.1" />
+    <PackageReference Include="NLog" Version="4.5.10" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="1.2.1" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.6.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="2.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Shared.Logger\Shared.Logger.csproj" />
+    <ProjectReference Include="..\..\Shared\Shared.Middleware\Shared.Middleware.csproj" />
+    <ProjectReference Include="..\..\Shared\Shared.Policies\Shared.Policies.csproj" />
+    <ProjectReference Include="..\Altinn.Api.Client\Altinn.Api.Client.csproj" />
+    <ProjectReference Include="..\Altinn.Api.Contratcs\Altinn.Api.Contratcs.csproj" />
+    <ProjectReference Include="..\Altinn.Api.Domain\Altinn.Api.Domain.csproj" />
+    <ProjectReference Include="..\Altinn.Api.Extensions\Altinn.Api.Extensions.csproj" />
+    <ProjectReference Include="..\Altinn.Api.Mapping\Altinn.Api.Mapping.csproj" />
+    <ProjectReference Include="..\Altinn.Api.Repositories\Altinn.Api.Repositories.csproj" />
+    <ProjectReference Include="..\Altinn.Api.Services\Altinn.Api.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Certificates\Buypass ID-BAREKSTAD OG YTTERVÅG REGNSKAP-serienummer1435568829075512466144341.Auth.p12">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Certificates\Buypass ID-BAREKSTAD OG YTTERVÅG REGNSKAP-serienummer1435591426240427709265768.Sign.p12">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="ApplyXdtConfigTransform" BeforeTargets="_TransformWebConfig">
+    <PropertyGroup>
+      <_SourceWebConfig>Web.config</_SourceWebConfig>
+      <_XdtTransform>Web.$(Configuration).config</_XdtTransform>
+      <_TargetWebConfig>$(PublishDir)Web.config</_TargetWebConfig>
+    </PropertyGroup>
+    <Exec Command="dotnet transform-xdt --xml &quot;$(_SourceWebConfig)&quot; --transform &quot;$(_XdtTransform)&quot; --output &quot;$(_TargetWebConfig)&quot;" Condition="Exists('$(_XdtTransform)')" />
+  </Target>
+</Project>

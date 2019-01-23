@@ -1,0 +1,19 @@
+.side-menu {
+  max-width: 0;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: 0.3s all linear;
+
+  &.open {
+    max-width: 350px;
+  }
+}
+
+.content {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: 0.3s all linear;
+}

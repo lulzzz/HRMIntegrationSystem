@@ -1,0 +1,67 @@
+<div class="header-fullsize">
+  <nav
+    class="navbar sticky-top navbar-expand-md navbar-dark bg-dark d-none d-md-block"
+  >
+    <div class="collapse navbar-collapse">
+      <div class="navbar-nav">
+        <button
+          class="navbar-toggler2"
+          title="Toggle menu"
+          (click)="toggleSideMenu()"
+        >
+          <i aria-hidden="true" class="fal fa-bars fa-1x"></i>
+        </button>
+        <a class="navbar-brand ml-2 mr-2" href="/">
+          <img
+            alt="Sticos"
+            class="d-inline-block align-top"
+            height="30"
+            src="assets/img/logo/sticos-logo-tiny.png"
+          />
+        </a>
+        <app-sticos-product-switcher
+          class="d-none d-lg-block d-xl-block"
+        ></app-sticos-product-switcher>
+      </div>
+      <div class="d-block mx-auto w-100" *ngIf="isLoading">
+        <app-spinner></app-spinner>
+      </div>
+      <div class="navbar-nav ml-md-auto">
+        <app-global-search></app-global-search>
+        <app-user-dropdown></app-user-dropdown>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!-- Mobile version -->
+<div class="header-mobile">
+  <div class="navbar-mobile">
+    <button
+      class="navbar-toggler2"
+      title="Toggle menu"
+      (click)="toggleSideMenu()"
+    >
+      <i aria-hidden="true" class="fal fa-bars fa-1x"></i>
+    </button>
+    <a class="navbar-brand ml-2 mr-2 mobile-image">
+      <img
+        alt="Sticos"
+        class="d-inline-block align-top"
+        height="30"
+        src="assets/img/logo/sticos-logo-tiny.png"
+      />
+    </a>
+  </div>
+  <div class="header-settings" (click)="collapse = !collapse">
+    <i class="fal fa-ellipsis-h fa-w-16 fa-2x"> </i>
+  </div>
+  <div class="header-collapse-settings" *ngIf="collapse" [@slideRightLeft]>
+    <div class="header-settings-items">
+      <ul class="p-0" [style.width]="'100%'">
+        <li class="pb-3"><app-global-search></app-global-search></li>
+        <li><app-user-dropdown></app-user-dropdown></li>
+      </ul>
+    </div>
+  </div>
+</div>

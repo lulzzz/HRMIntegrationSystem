@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Api.ProxyClient\Common.Api.ProxyClient.csproj" />
+    <ProjectReference Include="..\..\Shared\Shared.Interfaces\Shared.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Shared\Shared.Services\Shared.Services.csproj" />
+    <ProjectReference Include="..\Altinn.Api.Client\Altinn.Api.Client.csproj" />
+    <ProjectReference Include="..\Altinn.Api.Domain\Altinn.Api.Domain.csproj" />
+    <ProjectReference Include="..\Altinn.Api.Mapping\Altinn.Api.Mapping.csproj" />
+    <ProjectReference Include="..\Altinn.Api.Repositories\Altinn.Api.Repositories.csproj" />
+    <ProjectReference Include="..\Altinn.Api.Services\Altinn.Api.Services.csproj" />
+  </ItemGroup>
+
+</Project>

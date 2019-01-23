@@ -1,0 +1,19 @@
+<div class="input-group">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="{{ 'layout.header.search.placeholder' | translate }}"
+      [(ngModel)]="query"
+      (keyup.enter)="quickSearch()"
+    />
+    <div class="input-group-append">
+        <button
+          type="submit"
+          class="btn btn-warning"
+          [disabled]="query === ''"
+          (click)="quickSearch()"
+        >
+          <span class="fa fa-search" aria-hidden="true"></span>
+        </button>
+    </div>
+  </div>

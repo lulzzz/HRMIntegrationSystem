@@ -1,0 +1,12 @@
+<div *ngIf="(isLoading | async)" class="h-100"><sc-spinner></sc-spinner></div>
+<div *ngIf="!(isLoading | async)" class="h-100">
+  <sw-dashboard
+    [widgetData]="widgetConfig"
+    [title]="title"
+    [loadingTemplate]="loadingTemplate"
+    (change)="save($event)"
+    [apiUrls]="apiUrls"
+  ></sw-dashboard>
+</div>
+
+<ng-template #loadingTemplate> <sc-spinner></sc-spinner> </ng-template>

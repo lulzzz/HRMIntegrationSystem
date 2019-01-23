@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Unit4\**" />
+    <Compile Remove="Xledger\**" />
+    <EmbeddedResource Remove="Unit4\**" />
+    <EmbeddedResource Remove="Xledger\**" />
+    <None Remove="Unit4\**" />
+    <None Remove="Xledger\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Timereg.Api.Contracts\Timereg.Api.Contracts.csproj" />
+    <ProjectReference Include="..\Timereg.Api.Domain\Timereg.Api.Domain.csproj" />
+    <ProjectReference Include="..\Timereg.Api.Repositories\Timereg.Api.Repositories.csproj" />
+    <ProjectReference Include="..\Timereg.Api.UniMicro\Timereg.Api.Unimicro.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Sticos.Personal.MessageContracts">
+      <HintPath>..\..\lib\Sticos.Personal.MessageContracts.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

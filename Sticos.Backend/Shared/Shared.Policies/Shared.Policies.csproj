@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="2.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Api.Contracts\Common.Api.Contracts.csproj" />
+    <ProjectReference Include="..\Shared.Interfaces\Shared.Interfaces.csproj" />
+    <ProjectReference Include="..\Shared.Services\Shared.Services.csproj" />
+  </ItemGroup>
+
+</Project>

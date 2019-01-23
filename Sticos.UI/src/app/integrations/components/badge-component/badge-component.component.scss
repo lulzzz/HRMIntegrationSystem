@@ -1,0 +1,10 @@
+.badge-message {
+  font-size: 15px;
+
+  &.success{
+    background-color: var(--success);
+  }
+  &.danger{
+    background-color: var(--danger);
+  }
+}

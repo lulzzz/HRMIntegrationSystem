@@ -1,0 +1,17 @@
+{
+  "idleAfterSeconds": 900,
+  "timeoutAfterSeconds": 300,
+  "pingAfterSeconds": 60,
+  "pingUrl": "",
+  "logoutUrl": "",
+  "apiUrls": {
+    "common": "http://localhost:5000",
+    "timereg": "http://localhost:56763",
+    "altinn": "http://localhost:55651",
+    "integrations": "http://localhost:61256",
+    "news": "http://localhost:55514",
+    "filePreview": "https://localhost:44302" ,
+    "personal": "https://localhost:44302"
+  },
+  "personalUnitListUrl": "https://utv-personal.sticos.no/felles/enhetliste"
+}

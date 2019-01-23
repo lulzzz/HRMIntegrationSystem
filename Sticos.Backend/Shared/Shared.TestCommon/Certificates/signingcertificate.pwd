@@ -1,0 +1,5 @@
+﻿password: 123456
+
+created by:
+makecert -r -n "CN=self-signed-unitesting.sticos.no" -sv signingcertificate.pvk signingcertificate.cer
+pvk2pfx -pvk signingcertificate.pvk -spc signingcertificate.cer -pfx signingcertificate.pfx

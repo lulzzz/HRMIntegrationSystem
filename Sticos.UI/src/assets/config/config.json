@@ -1,0 +1,18 @@
+{
+  "_comment": "the values below are replaced in azure releasepipeline. Quotes below are with purpose removed for Number's",
+  "idleAfterSeconds": #{idleAfterSeconds}#,
+  "timeoutAfterSeconds": #{timeoutAfterSeconds}#,
+  "pingAfterSeconds": #{pingAfterSeconds}#,
+  "pingUrl": "#{pingUrl}#",
+  "logoutUrl": "#{logoutUrl}#",
+  "apiUrls": {
+    "common": "#{apiUrls.common}#",
+    "timereg": "#{apiUrls.timereg}#",
+    "altinn": "#{apiUrls.altinn}#",
+    "integrations": "#{apiUrls.integrations}#",
+    "news": "#{apiUrls.news}#",
+    "filePreview": "#{apiUrls.filePreview}#",
+    "personal": "#{apiUrls.personal}#"
+  },
+  "personalUnitListUrl": "#{personalUnitListUrl}#"
+}

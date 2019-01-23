@@ -1,0 +1,18 @@
+<div class="row mt-2 mb-4">
+
+  <div class="col"></div>
+  <div class="col-12 col-sm-12 col-md-10 col-lg-8">
+
+    <ng-container *ngIf="(items$ | async) as items; else loading">
+      <app-news-list [items]="items" [options]="options"></app-news-list>
+    </ng-container>
+
+    <ng-template #loading>
+      gfdgdfg
+      <app-news-list-page-skeleton></app-news-list-page-skeleton>
+    </ng-template>
+    
+  </div>
+  <div class="col"></div>
+
+</div>

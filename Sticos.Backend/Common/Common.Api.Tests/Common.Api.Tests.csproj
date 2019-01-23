@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+
+    <Configurations>Debug;Release;Utv;Test;Production</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Services\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\Shared\Shared.TestCommon\Certificates\signingcertificate.pfx" Link="signingcertificate.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bogus" Version="23.0.3" />
+    <PackageReference Include="FakeItEasy" Version="4.8.1" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="2.1.1" />
+    <PackageReference Include="NUnit" Version="3.10.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Integrations\Integrations.Api.Contracts\Integrations.Api.Contracts.csproj" />
+    <ProjectReference Include="..\..\Shared\Shared.TestCommon\Shared.TestCommon.csproj" />
+    <ProjectReference Include="..\Common.Api.Extensions\Common.Api.Extensions.csproj" />
+    <ProjectReference Include="..\Common.Api.Mapping\Common.Api.Mapping.csproj" />
+    <ProjectReference Include="..\Common.Api.\Common.Api.csproj" />
+    <ProjectReference Include="..\TestCommon\TestCommon.csproj" />
+    <ProjectReference Include="..\..\Shared\Shared.Exceptions\Shared.Exceptions.csproj" />
+  </ItemGroup>
+
+</Project>

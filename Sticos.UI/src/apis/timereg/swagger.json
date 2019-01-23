@@ -1,0 +1,403 @@
+{
+  "swagger": "2.0",
+  "info": { "title": "Timereg Api", "description": "Swagger core timereg Api" },
+  "paths": {
+    "/{customerId}/absenceexports": {
+      "get": {
+        "tags": ["AbsenceExport"],
+        "operationId": "GetAll",
+        "consumes": [],
+        "produces": ["text/plain", "application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "LocalId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "UnitId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          { "name": "Id", "in": "query", "required": false, "type": "string" },
+          {
+            "name": "Skip",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "Take",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/AbsenceExport" }
+            }
+          }
+        }
+      }
+    },
+    "/{customerId}/absenceexports/{absenceExportId}": {
+      "get": {
+        "tags": ["AbsenceExport"],
+        "operationId": "Execute",
+        "consumes": [],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "absenceExportId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "action",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": { "200": { "description": "Success" } }
+      }
+    },
+    "/{customerId}/externalsystems": {
+      "get": {
+        "tags": ["ExternalSystem"],
+        "operationId": "Search",
+        "consumes": [],
+        "produces": ["text/plain", "application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "Skip",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "Take",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/ICode" }
+            }
+          }
+        }
+      }
+    },
+    "/{customerId}/externalsystems/{id}/externaldata": {
+      "get": {
+        "tags": ["ExternalSystem"],
+        "operationId": "GetExternalData",
+        "consumes": [],
+        "produces": ["text/plain", "application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "unitId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "entity",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/ExternalData" }
+            }
+          }
+        }
+      }
+    },
+    "/{customerId}/externalsystems/{id}/matchentities": {
+      "get": {
+        "tags": ["ExternalSystem"],
+        "operationId": "MatchEntities",
+        "consumes": [],
+        "produces": ["text/plain", "application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "unitId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "entity",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": { "type": "integer", "format": "int32" },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/EntityMatch" }
+            }
+          }
+        }
+      }
+    },
+    "/{customerId}/externalsystems/{id}": {
+      "get": {
+        "tags": ["ExternalSystem"],
+        "operationId": "GetExternalSystem",
+        "consumes": [],
+        "produces": ["text/plain", "application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": { "$ref": "#/definitions/ExternalSystem" }
+          }
+        }
+      }
+    },
+    "/{customerId}/reports": {
+      "get": {
+        "tags": ["Report"],
+        "operationId": "Get",
+        "consumes": [],
+        "produces": ["text/plain", "application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "unitId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "employeeId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": { "$ref": "#/definitions/HourBalance" }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AbsenceExport": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "unitId": { "format": "int32", "type": "integer" },
+        "localAbsenceId": { "format": "int32", "type": "integer" },
+        "employeeId": { "format": "int32", "type": "integer" },
+        "status": {
+          "format": "int32",
+          "enum": [0, 5, 10, 20, 30],
+          "type": "integer"
+        },
+        "action": {
+          "format": "int32",
+          "enum": [0, 10, 20, 30],
+          "type": "integer"
+        },
+        "message": { "type": "string" },
+        "createdAt": { "format": "date-time", "type": "string" },
+        "updateAt": { "format": "date-time", "type": "string" },
+        "createdBy": { "type": "string" },
+        "updatedBy": { "type": "string" },
+        "absenceJson": { "type": "string" }
+      }
+    },
+    "ICode": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "uuid", "type": "string", "readOnly": true },
+        "type": { "type": "string", "readOnly": true },
+        "value": { "type": "string", "readOnly": true },
+        "order": { "format": "int32", "type": "integer", "readOnly": true },
+        "image": { "type": "string" }
+      }
+    },
+    "ExternalData": {
+      "type": "object",
+      "properties": {
+        "identifiers": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Identifier" },
+          "readOnly": true
+        },
+        "dataSet": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Data" },
+          "readOnly": true
+        },
+        "validForUse": { "type": "boolean" },
+        "notValidReasons": { "type": "array", "items": { "type": "string" } },
+        "notValidReasonsEnums": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "Identifier": {
+      "type": "object",
+      "properties": {
+        "value": { "type": "string" },
+        "entity": { "type": "string" },
+        "property": { "type": "string" }
+      }
+    },
+    "Data": {
+      "type": "object",
+      "properties": {
+        "code": { "type": "string" },
+        "value": { "type": "string" }
+      }
+    },
+    "EntityMatch": {
+      "type": "object",
+      "properties": {
+        "entityMap": { "type": "string" },
+        "entityId": { "format": "int32", "type": "integer" },
+        "matchFactor": { "format": "double", "type": "number" },
+        "externalData": { "$ref": "#/definitions/ExternalData" }
+      }
+    },
+    "ExternalSystem": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "uuid", "type": "string" },
+        "type": { "type": "string" },
+        "value": { "type": "string" },
+        "order": { "format": "int32", "type": "integer" },
+        "image": { "type": "string" },
+        "websiteUrl": { "type": "string" }
+      }
+    },
+    "HourBalance": {
+      "type": "object",
+      "properties": {
+        "expectedMinutes": { "format": "int32", "type": "integer" },
+        "actualMinutes": { "format": "int32", "type": "integer" },
+        "hourBalanceInMinutes": {
+          "format": "double",
+          "type": "number",
+          "readOnly": true
+        },
+        "hourBalanceInHours": {
+          "format": "double",
+          "type": "number",
+          "readOnly": true
+        }
+      }
+    }
+  }
+}

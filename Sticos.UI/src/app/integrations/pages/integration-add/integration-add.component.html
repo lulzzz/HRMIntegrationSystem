@@ -1,0 +1,130 @@
+<div class="card">
+  <div *ngIf="alert" class="alert-padding">
+    <alert [type]="alert.type">{{ alert.message }}</alert>
+  </div>
+  <div class="card-header clearfix">
+    <h5 class="float-left">{{'integrations.add.title' | translate }}</h5>
+  </div>
+  <div class="card-body">
+
+    <div class="row">
+      <div class="col-xl-3 col-lg-3 col-md-4 col-12">
+
+        <div class="progress">
+          <div aria-valuemax="100" aria-valuemin="0" class="progress-bar" role="progressbar" [style.width]="progress"></div>
+        </div>
+        <br>
+        <h5>{{'integrations.add.current-step-title' | translate}}</h5>
+        <hr>
+
+        <div class="wizard-title-step" (click)="setStep(1)">
+          <span [ngClass]="setStatusClass(1)">1. {{ 'common.units' | translate }}</span>
+          <i *ngIf="wizardStep > 1 && integrationAddForm.value.unitId" class="fas fa-check ml-2 wizardCompleteIconColor"></i>
+          <i *ngIf="wizardStep > 1 && !integrationAddForm.value.unitId" class="fas fa-times ml-2 text-danger"></i>
+        </div>
+        <div class="wizard-title-step" (click)="setStep(2)">
+          <span [ngClass]="setStatusClass(2)">2. {{ 'common.category' | translate }}</span>
+          <i *ngIf="wizardStep > 2 && integrationAddForm.value.category" class="fas fa-check ml-2 wizardCompleteIconColor"></i>
+          <i *ngIf="wizardStep > 2 && !integrationAddForm.value.category" class="fas fa-times ml-2 text-danger"></i>
+        </div>
+        <div class="wizard-title-step" (click)="setStep(3)">
+          <span [ngClass]="setStatusClass(3)">3. {{ 'integrations.common.external-system' | translate }}</span>
+          <i *ngIf="wizardStep > 3 && integrationAddForm.value.externalSystem" class="fas fa-check ml-2 wizardCompleteIconColor"></i>
+          <i *ngIf="wizardStep > 3 && !integrationAddForm.value.externalSystem" class="fas fa-times ml-2 text-danger"></i>
+        </div>
+        <div class="wizard-title-step" (click)="setStep(4)">
+          <span [ngClass]="setStatusClass(4)">{{ 'common.done' | translate }}</span>
+        </div>
+      </div>
+
+      <div class="col-xl-9 col-lg-9 col-md-8 col-12 wizard-form-container">
+        <form [formGroup]="integrationAddForm">
+          <div class="wizard-form-content">
+
+            <div *ngIf="wizardStep == 1">
+              <h5>{{ 'common.units' | translate }}</h5>
+              <div class="form-group">
+                <select class="form-control" formControlName="unitId" (ngModelChange)="stepsConfirmed($event); onGetUnitSelect($event)">
+                  <option *ngFor="let unit of units | sortDynamic: 'businessOrganizationNumber'" [ngValue]="unit.id"
+                    [ngClass]="{'drop-down-redtext': !unit.businessOrganizationNumber}">
+                    {{ unit.name }}
+                  </option>
+                </select>
+                <div class="org-button">
+                  <small class="form-text text-muted link-org-number-position">
+                    {{ 'integrations.add.units-subtitle' | translate }}
+                    <div class="org-number-button" *ngIf="showOrganizationNumberLink">
+                      <button type="button" class="btn btn-secondary" (click)="onNavigate()"> {{
+                        'integrations.add.organization-number' | translate }}</button>
+                    </div>
+                  </small>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="wizardStep == 2">
+              <div class="form-group">
+                <h5>{{ 'common.category' | translate }}</h5>
+                <dx-radio-group [items]="categories" (onValueChanged)="stepsConfirmed($event); onGetCategorySelect($event)"
+                  class="radio-box-override">
+                  <div *dxTemplate="let category of 'item'">
+                    <div class="radio-box-wrapper category justify-content-center">
+                      <div class="text-wrapper">{{ ('enum.integrationcategoryenum.' + category.value ) | translate }}</div>
+                    </div>
+                  </div>
+                </dx-radio-group>
+              </div>
+            </div>
+            <div *ngIf="wizardStep == 3">
+              <h5>{{ 'integrations.common.external-system' | translate }}</h5>
+              <div class="form-group">
+                <div>
+                  <dx-radio-group [items]="externalSystems" (onValueChanged)="stepsConfirmed($event); onGetExternalSystemSelect($event)"
+                    class="radio-box-override" *ngIf="externalSystems">
+                    <div *dxTemplate="let externalSystem of 'item'">
+                      <div class="radio-box-wrapper external">
+                        <img class="external-system-picture" [src]="'assets/img/logo/' +externalSystem.image">
+                        <div class="text-wrapper">{{ externalSystem.value | enumReader: externalSystem.type }}</div>
+                      </div>
+                    </div>
+                  </dx-radio-group>
+                  <p *ngIf="!externalSystems">{{ 'common.external-systems-not-found' | translate}}</p>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="wizardStep == 4">
+              <h5>{{ 'common.done' | translate }}</h5>
+              <div class="wizzard-message-text">
+                <p>{{ 'common.done-decription' | translate }}</p>
+              </div>
+            </div>
+            <hr>
+
+            <div class="btn-toolbar d-flex justify-content-between">
+              <div>
+                <div *ngIf="wizardStep != 1">
+                  <button type="submit" class="btn btn-default" (click)="previousPage(wizardStep)">{{
+                    'common.back' | translate }}</button>
+                </div>
+              </div>
+              <div>
+                <button *ngIf="wizardStep == 0" type="submit" class="btn btn-primary" (click)="nextPage(wizardStep)">{{
+                  'common.start'
+                  | translate }}</button>
+                <button *ngIf="wizardStep < (totalSteps) && wizardStep != 0" type="submit" class="btn btn-primary"
+                  [disabled]="!canContinue || showOrganizationNumberLink" (click)="nextPage(wizardStep)">{{
+                  'common.continue' | translate }}</button>
+                <button *ngIf="wizardStep == (totalSteps)" type="submit" class="btn btn-primary" (click)="onSubmitAddIntegration()"
+                  [disabled]="integrationAddForm.invalid">{{
+                  'common.complete' | translate }}</button>
+                <button type="button" class="btn btn-secondary button-margin" routerLink="/admin/integrations">{{'common.cancel'|
+                  translate}}</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

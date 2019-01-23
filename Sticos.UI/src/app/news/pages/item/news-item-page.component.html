@@ -1,0 +1,18 @@
+<ng-container *ngIf="item$ | async as item; else loading">
+
+  <h1 class="text-center">{{ item.title }}</h1>
+
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-12 col-sm-12 col-md-10 col-lg-8">
+
+      <app-news-item [post]="item" size="full"></app-news-item>
+    </div>
+    <div class="col"></div>
+  </div>
+
+</ng-container>
+
+<ng-template #loading>
+  <app-news-item-page-skeleton></app-news-item-page-skeleton>
+</ng-template>
